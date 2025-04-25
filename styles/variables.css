@@ -19,3 +19,28 @@
   --color-18: #FF7A59;
   --color-19: #FF9900;
 }
+
+@font-face {
+    font-family: "Space_Grotesk-Bold";
+    src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Space_Grotesk-Regular";
+    src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Space_Grotesk-Medium";
+    src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf);
+}
+
+@font-face {
+    font-family: "Space_Grotesk-Light";
+    src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Light.ttf);
+}
+
+@font-face {
+    font-family: "Space_Grotesk-SemiBold";
+    src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf);
+}
