@@ -29,7 +29,6 @@
 > - **CSS3**
 > - **JavaScript (ES6+)**
 > - **Git & GitHub**
-> - **GitHub Projects** (para gestión de tareas)
 > - **GitHub Pages** (para despliegue)
 > - **Figma** (para diseño base)
 >
