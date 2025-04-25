@@ -1,15 +1,15 @@
 # 📚 Campus News – Portal Universitario con Web Components 📚
 
 > **Duración estimada:** 2 horas
->  **Nivel:** Intermedio
->  **Tecnologías clave:** Web Components, Shadow DOM, Custom Events
+> **Nivel:** Intermedio
+> **Tecnologías clave:** Web Components, Shadow DOM, Custom Events
 >
 > ------
 >
 > ## 🧠 Introducción
 >
 > **Campus News** es una aplicación web modular que simula un portal de noticias universitarias, construido completamente con **Web Components** y **Shadow DOM**. Cada parte de la interfaz está desacoplada y encapsulada, lo que facilita la mantenibilidad y escalabilidad del proyecto.
->  La app se comunica internamente mediante **eventos personalizados**, y está pensada como práctica ideal para reforzar conceptos de desarrollo frontend moderno.
+> La app se comunica internamente mediante **eventos personalizados**, y está pensada como práctica ideal para reforzar conceptos de desarrollo frontend moderno.
 >
 > ------
 >
@@ -71,7 +71,7 @@
 > </campus-news-app>
 > ```
 >
-> ### Componentes
+> ## 🧩Componentes
 >
 > - **`<campus-news-app>`**: Orquesta el estado global.
 > - **`<campus-category-filters>`**: Botones de categorías.
@@ -180,6 +180,131 @@
 > 6. En `<campus-news-app>`: orquestar estado global y manejar todos los eventos.
 >
 > ------
+>
+> ### 🎭 **Patrón de Diseño Pub/Sub Aplicado al Proyecto**
+>
+> #### 📂 **Estructura de Carpetas Final Optimizada**
+>
+> ```
+> campus-news/
+> ├── assets/
+> │   ├── icons/          # Todos los iconos en SVG
+> │   ├── images/         # Imágenes optimizadas
+> │   └── fonts/          # Fuentes personalizadas
+> ├── src/
+> │   ├── components/     # Componentes autocontenidos
+> │   │   ├── campus-news-app/    # Broker central
+> │   │   │   ├── campus-news-app.js
+> │   │   │   └── campus-news-app.css
+> │   │   ├── campus-category-filters/  # Publicador
+> │   │   └── ...otros
+> │   ├── data/          # articles.js
+> │   ├── events/        # constants.js
+> │   ├── utils/         # helpers.js
+> │   └── index.js       # Registro WC
+> ├── styles/
+> │   ├── global.css     # :root vars
+> │   └── components/    # Estilos compartidos
+> ├── index.html         # Entry point
+> └── README.md
+> ```
+>
+> ### 🛠 **Tips de Implementación Esenciales**
+>
+> 1. **Custom Events Robustos**:
+>
+> ```
+> // En constants.js
+> export const EVENT_CONFIG = {
+>   bubbles: true,
+>   composed: true,  // Cruza Shadow DOM
+>   cancelable: true // Permite preventDefault()
+> };
+> 
+> // Al emitir
+> this.dispatchEvent(new CustomEvent(
+>   EVENTS.FILTER_CHANGE, 
+>   {
+>     ...EVENT_CONFIG,
+>     detail: { category: 'noticias' }
+>   }
+> ));
+> ```
+>
+> 2. **Shadow DOM Eficiente**:
+>
+> ```
+> class CampusNewsItem extends HTMLElement {
+>   constructor() {
+>     super();
+>     this.attachShadow({ mode: 'open' });
+>     this.shadowRoot.innerHTML = `
+>       <style>
+>         :host {
+>           display: block;
+>           contain: content;  /* Optimización */
+>         }
+>         h3 { color: var(--text-dark) }
+>       </style>
+>       <article>
+>         <h3></h3>
+>       </article>
+>     `;
+>   }
+> }
+> ```
+>
+> 3. **Gestión de Estado Sencilla**:
+>
+> ```
+> // En campus-news-app.js
+> this.state = {
+>   currentFilter: 'all',
+>   articles: [],
+>   get filteredArticles() {
+>     return this.articles.filter(a => 
+>       this.currentFilter === 'all' || 
+>       a.category === this.currentFilter
+>     );
+>   }
+> };
+> ```
+>
+> 4. **Patrón Observer para Performance**:
+>
+> ```
+> // Broker principal
+> this.debounceTimer = null;
+> 
+> this.updateComponents = () => {
+>   clearTimeout(this.debounceTimer);
+>   this.debounceTimer = setTimeout(() => {
+>     this.dispatchStateUpdate();
+>   }, 50);  // Debounce para múltiples updates
+> };
+> ```
+>
+> 5. **Sistema de Errores**:
+>
+> ```
+> try {
+>   this.dispatchEvent(/*...*/);
+> } catch (error) {
+>   console.error(`Error en Pub/Sub: ${error.message}`);
+>   this.dispatchEvent(new CustomEvent(
+>     'campus:error', 
+>     { detail: { error } }
+>   ));
+> }
+> ```
+>
+> ### 🔥 **Flujo de Eventos.**
+>
+>    	  ![image-20250425174134036](/home/camper/.config/Typora/typora-user-images/image-20250425174134036.png)
+>
+> ------
+>
+> 
 >
 > ## ✅ Criterios de evaluación
 >
