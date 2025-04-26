@@ -61,3 +61,8 @@ document.querySelectorAll(".iconimage1 img").forEach((icon) => {
     });
 });
 
+document.addEventListener("campus:category-change", (event) => {
+    console.log("📡 Categoría cambiada:", event.detail.category);
+    // 🎯 Agregar lógica personalizada para manejar el cambio
+});
+
