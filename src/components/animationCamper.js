@@ -80,3 +80,16 @@ window.addEventListener("load", () => {
         ease: "power1.out" // ✨ Movimiento suave
     });
 });
+
+// 🎯 Seleccionar todas las tarjetas
+const cards = document.querySelectorAll(".card");
+
+// 🌟 Animación de aparición
+cards.forEach((card) => {
+  gsap.from(card, {
+    opacity: 0,        // 👻 Comienza invisible
+    y: 20,             // 🔽 Aparece desde abajo
+    duration: 0.8,     // ⏳ Duración de la animación
+    ease: "power2.out" // ✨ Suavidad en la transición
+  });
+});
