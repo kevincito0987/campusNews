@@ -18,7 +18,23 @@ header {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  /* 🎞️ Animación para cambiar fondo */
+  animation: backgroundChange 540s infinite; /* 540s = 3 minutos por imagen */
 }
+
+@keyframes backgroundChange {
+  0%, 33.33% {
+    background-image: url(../assets/images/bg1.png);
+  }
+  33.34%, 66.66% {
+    background-image: url(../assets/images/bg.png);
+  }
+  66.67%, 100% {
+    background-image: url(../assets/images/bg2.jpeg);
+  }
+}
+
 
 header h1 {
   font-size: 4rem;
