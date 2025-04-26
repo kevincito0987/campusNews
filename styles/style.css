@@ -165,6 +165,10 @@ main::before {
   height: auto;
   object-fit: cover;
 }
+.card-image img:hover {
+  filter: brightness(1.1);
+  transition: filter 0.3s ease;
+}
 
 .iconimage1:hover img {
   transform: scale(1.1);
