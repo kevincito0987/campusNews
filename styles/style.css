@@ -80,6 +80,9 @@ main {
 .filters a img {
   width: 50px;
 }
+.filters a img:hover {
+  transform: scale(1.1);
+}
 
 .filters a {
   transition: background-color 0.3s ease, color 0.3s ease;
