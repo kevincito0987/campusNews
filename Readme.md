@@ -298,7 +298,7 @@
 
  ### 🔥 **Flujo de Eventos.**
 
-[](./assets/images/factory.png)]
+[](./assets/images/factory.png)
 
 ------
 
