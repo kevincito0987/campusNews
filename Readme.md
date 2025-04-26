@@ -298,7 +298,7 @@
 
  ### 🔥 **Flujo de Eventos.**
 
-    	  ![image-20250425174134036](/home/camper/.config/Typora/typora-user-images/image-20250425174134036.png)
+    	  ![image-20250425174134036](./assets/images/factory.png)
 
 ------
 
