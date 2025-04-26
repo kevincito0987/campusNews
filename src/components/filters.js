@@ -109,7 +109,6 @@ class FiltersComponent extends HTMLElement {
 // 📦 Registrar el componente personalizado
 customElements.define("filters-component", FiltersComponent);
 
-
 document.addEventListener("campus:category-change", (event) => {
     console.log("🚀 Evento capturado:", event.detail.category);
     // 🎯 Lógica personalizada para la categoría seleccionada

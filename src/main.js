@@ -13,7 +13,6 @@ async function fetchNews(query) {
         const data = await response.json(); // 📜 Parsear la respuesta a formato JSON
 
         if (data.status === "ok") {
-            // console.log(`🔢 Total de noticias encontradas sobre "${query}": ${data.totalResults}`, data.articles); // 📊 Mostrar los resultados
             return data; // 📰 Retornar datos completos (artículos incluidos)
         } else {
             console.error("⚠️ Error en la API:", data.message); // ⚠️ Mostrar error si ocurre
@@ -25,42 +24,24 @@ async function fetchNews(query) {
     }
 }
 
-// 📚 Función específica para noticias escolares
-async function fetchSchoolNews() {
-    console.log("📚 Noticias sobre 'school'");
-    return await fetchNews("school"); // 🏫 Busca noticias relacionadas con escuelas
-}
-
-// 💻 Función específica para noticias tecnológicas
-async function fetchTechnologyNews() {
-    console.log("💻 Noticias sobre 'technology'");
-    return await fetchNews("technology"); // 🔌 Busca noticias relacionadas con tecnología
-}
-
-// 🏢 Función específica para noticias corporativas
-async function fetchCorporateNews() {
-    console.log("🏢 Noticias sobre 'corporate'");
-    return await fetchNews("corporate"); // 🏙️ Busca noticias relacionadas con negocios y empresas
-}
-
-// 🔄 Función para actualizar las tarjetas con noticias recientes del filtro de tecnología
-async function updateTechnologyCards() {
-    console.log("🔄 Actualizando tarjetas con noticias de tecnología...");
+// 🔄 Función para actualizar las tarjetas con noticias recientes
+async function updateCards(category) {
+    console.log(`🔄 Actualizando tarjetas para la categoría: ${category}`);
 
     try {
-        // Obtener los datos de las noticias de tecnología
-        const response = await fetchTechnologyNews();
+        // Obtener los datos de noticias
+        const response = await fetchNews(category);
         const articles = response.articles; // 📰 Extraer los artículos de la respuesta
 
         if (!articles || articles.length === 0) {
-            console.error("❌ No se encontraron noticias de tecnología.");
+            console.error("❌ No se encontraron noticias para esta categoría.");
             return;
         }
 
         // Seleccionar las tarjetas existentes
         const cards = document.querySelectorAll(".card");
 
-        // Actualizar las primeras 5 tarjetas
+        // Actualizar las tarjetas con las primeras 5 noticias
         articles.slice(0, 5).forEach((article, index) => {
             const card = cards[index];
 
@@ -92,42 +73,24 @@ async function updateTechnologyCards() {
 
         console.log("✅ Las tarjetas se han actualizado correctamente.");
     } catch (error) {
-        console.error("❌ Error al actualizar las tarjetas con noticias de tecnología:", error);
+        console.error("❌ Error al actualizar las tarjetas:", error);
     }
 }
 
-// 🎯 Alternar estado de íconos de favoritos
-document.querySelectorAll(".iconimage1 img").forEach((icon) => {
-    icon.addEventListener("click", () => {
-        // 🌟 Alternar entre estados
-        if (icon.src.includes("emptyFavoriteIcon.svg")) {
-            icon.src = "../assets/icons/fillFavoriteIcon.svg"; // Cambiar a "favorito completo"
-            console.log("✅ Artículo marcado como favorito.");
-        } else {
-            icon.src = "../assets/icons/emptyFavoriteIcon.svg"; // Cambiar a "favoritos vacíos"
-            console.log("❌ Artículo eliminado de favoritos.");
-        }
-    });
-});
-
-// 🎯 Escuchar eventos personalizados para cambios de categoría
+// 🎯 Escuchar cambios de categoría
 document.addEventListener("campus:category-change", (event) => {
-    console.log("📡 Categoría cambiada:", event.detail.category);
-    // 🎯 Agregar lógica personalizada para manejar el cambio
+    const category = event.detail.category;
+    console.log("🚀 Evento capturado, categoría seleccionada:", category);
+
+    // Actualizar las tarjetas según la categoría seleccionada
+    if (category === "all") {
+        updateCards("all");
+    } else {
+        updateCards(category);
+    }
 });
 
-// 🛠️ Actualizar las tarjetas al cargar la página
+// 🛠️ Actualizar las tarjetas al cargar la página con el filtro "all"
 document.addEventListener("DOMContentLoaded", () => {
-    updateTechnologyCards(); // 🔄 Actualizar las tarjetas con noticias de tecnología
-});
-
-document.querySelectorAll(".card-button").forEach((button) => {
-    button.addEventListener("click", () => {
-        button.dispatchEvent(new CustomEvent("card:button-click", {
-            detail: { action: "learn-more" },
-            bubbles: true,
-            composed: true
-        }));
-        console.log("🚀 Evento disparado:", button.textContent);
-    });
+    updateCards("all"); // Inicializar con "All News"
 });
