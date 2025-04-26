@@ -83,10 +83,10 @@ document.addEventListener("campus:category-change", (event) => {
     console.log("🚀 Evento capturado, categoría seleccionada:", category);
 
     // Actualizar las tarjetas según la categoría seleccionada
-    if (category === "all") {
-        updateCards("all");
-    } else {
+    if (["all", "school", "technology", "corporate"].includes(category)) {
         updateCards(category);
+    } else {
+        console.log("⚠️ Categoría desconocida, no se actualizarán las tarjetas.");
     }
 });
 
