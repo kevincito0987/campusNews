@@ -44,6 +44,6 @@ function fetchCorporateNews() {
 }
 
 // 🎯 Ejecutar las funciones independientes
-fetchSchoolNews();      // 🏫 Consulta de noticias escolares
-fetchTechnologyNews();  // 💻 Consulta de noticias tecnológicas
-fetchCorporateNews();   // 🏢 Consulta de noticias corporativas
+// fetchSchoolNews();      // 🏫 Consulta de noticias escolares
+// fetchTechnologyNews();  // 💻 Consulta de noticias tecnológicas
+// fetchCorporateNews();   // 🏢 Consulta de noticias corporativas
