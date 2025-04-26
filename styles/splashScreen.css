@@ -8,11 +8,14 @@
 
 body {
     display: flex;
+    width: 100%;
     flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
     background-image: url(../assets/images/splash.png);
-    background-size: cover;
-    background-position: center;
+    background-position: center center; /* Centra el fondo */
     background-repeat: no-repeat;
+    background-size: cover; /* Cubre completamente el área visible */
 }
 
 .content {
@@ -22,8 +25,8 @@ body {
     justify-content: center;
     text-align: center;
     width: 80%;
-    margin: 10% 10%;
     gap: 40px;
+    margin: 400px 20px 60px 20px;
 }
 
 .content > img {
@@ -68,4 +71,77 @@ a:hover p {
 
 .content a img {
     width: 70px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 440px) {
+    /* Estilos para pantallas pequeñas */
+    .content {
+       margin-top: 200px;
+    }
+}
+
+
+@media screen and (min-width: 800px) and (max-width: 1280px) {
+    body {
+        background-image: url(../assets/images/splash.png);
+        background-position: center center; /* Centrado horizontal y vertical */
+        background-repeat: no-repeat; /* No se repite el fondo */
+        background-size: cover; /* Cubre completamente el área visible */
+        height: 100vh; /* Ajusta el cuerpo al 100% de altura del viewport */
+        width: 100vw; /* Ajusta el cuerpo al 100% de ancho del viewport */
+    }
+}
+
+@media screen and (min-width: 1114px) and (max-height: 705px) {
+    body {
+        margin-top: 700px;
+        background-image: url(../assets/images/splash.png);
+        background-repeat: no-repeat; /* Sin repetición del fondo */
+        background-size: cover; /* Ajusta el fondo para cubrir completamente */
+        height: 100vh; /* Asegura que el fondo ocupe toda la altura del viewport */
+        width: 100%; /* Asegura que ocupe todo el ancho del viewport */
+    }
+
+    .content {
+        width: 90%; /* Ajusta el contenido a mayor proporción dentro de la pantalla */
+        margin: -450px 20% 60px;
+        padding: 30px;
+    }
+    .content > img {
+        width: 800px;
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 1280px) and (min-height: 800px) {
+    body {
+        background-image: url(../assets/images/splash.png);
+        background-position: center center; /* Centra el fondo en ambas direcciones */
+        background-repeat: no-repeat; /* Evita que el fondo se repita */
+        background-size: cover; /* Asegura que el fondo cubra toda la pantalla */
+        height: 380vh; /* Ajusta la altura al 100% del viewport */
+        width: 100%; /* Ajusta el ancho al 100% del viewport */
+    }
+
+    .content {
+        width: 70%; /* Ajusta el contenido para adaptarse a pantallas más grandes */
+        text-align: center; /* Centra el texto */
+        gap: 50px; /* Añade espacio entre elementos */
+        margin: 300px 40px 60px; /* Centra el contenido en la pantalla */
+        position: absolute;
+        padding: 30px;
+    }
+
+    .content h1 {
+        font-size: 8rem; /* Escala el título para pantallas grandes */
+    }
+
+    .content p {
+        font-size: 3.8rem; /* Aumenta ligeramente el tamaño del texto */
+    }
+
+    .content > img {
+        width: 800px; /* Ajusta el tamaño de las imágenes */
+        height: auto;
+    }
 }
