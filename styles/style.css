@@ -77,7 +77,7 @@ main::before {
   content: ""; /* 🌀 Elemento vacío para aplicar el fondo */
   bottom: 0; /* 📍 Lo coloca al fondo */
   left: 0; /* 📍 Lo posiciona en la izquierda */
-  width: 133%; /* 📏 Ancho extendido */
+  width: 100%; /* 📏 Ancho extendido */
   margin-top: -700px; /* 📏 Ajuste de posición */
   height: 700px; /* 📏 Altura para degradado */
   background: linear-gradient(180deg, transparent 0%, var(--color-3) 100%); /* 🎨 Degradado */
