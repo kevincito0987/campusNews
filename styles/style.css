@@ -72,6 +72,28 @@ main {
   }
 }
 
+/* 🌄 Pseudo-elemento para degradado */
+main::before {
+  content: ""; /* 🌀 Elemento vacío para aplicar el fondo */
+  bottom: 0; /* 📍 Lo coloca al fondo */
+  left: 0; /* 📍 Lo posiciona en la izquierda */
+  width: 133%; /* 📏 Ancho extendido */
+  margin-top: -700px; /* 📏 Ajuste de posición */
+  height: 700px; /* 📏 Altura para degradado */
+  background: linear-gradient(180deg, transparent 0%, var(--color-3) 100%); /* 🎨 Degradado */
+}
+
+/* 🏕️ Contenedor principal */
+.mainContent {
+  display: flex; /* 📐 Activa flexbox */
+  flex-direction: column; /* ⬆ Organiza los elementos en columna */
+  justify-content: center; /* 🎯 Centra verticalmente */
+  align-items: center; /* 📍 Alineación centrada */
+  width: 100%; /* 📏 Ocupa todo el ancho */
+  position: relative; /* 📌 Necesario para superposiciones */
+  margin-top: -250px; /* 📏 Ajuste de posición */
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
@@ -106,7 +128,7 @@ main {
 
 .card:hover {
   box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.5);
-  background: var(--color-6);
+  background: var(--color-14);
 }
 .card-image {
   gap: 10px;
