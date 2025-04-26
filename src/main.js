@@ -4,6 +4,9 @@ console.log("Funcion main"); // 🎯 Verifica el inicio del proceso
 const API_KEY = "46764596d04e4535a98f20d752e0735d"; // 🔑 Tu clave para la API
 const BASE_URL = "https://newsapi.org/v2/everything"; // 🌐 URL base de la API
 
+// 🔒 Lista para almacenar las tarjetas marcadas como favoritas
+let favoriteCards = JSON.parse(localStorage.getItem("favoriteCards")) || []; // Cargar favoritos desde localStorage
+
 // 🔄 Función genérica para obtener noticias por categoría
 async function fetchNews(query) {
     const url = `${BASE_URL}?q=${query}&apiKey=${API_KEY}`; // 🌐 Construir la URL con los parámetros
@@ -39,36 +42,12 @@ async function updateCards(category) {
         }
 
         // Seleccionar las tarjetas existentes
-        const cards = document.querySelectorAll(".card");
+        const cardsContainer = document.querySelector(".card-container");
+        cardsContainer.innerHTML = ""; // Limpiar el contenedor SOLO para esta categoría
 
-        // Actualizar las tarjetas con las primeras 5 noticias
-        articles.slice(0, 5).forEach((article, index) => {
-            const card = cards[index];
-
-            if (card) {
-                // 🖼️ Actualizar imagen
-                const image = card.querySelector(".card-image img");
-                image.src = article.urlToImage || "./assets/images/placeholder.jpg"; // Imagen predeterminada si no hay imagen
-                image.alt = article.title;
-
-                // 🌟 Actualizar título
-                const title = card.querySelector(".card-title");
-                title.textContent = article.title;
-
-                // 📝 Actualizar descripción
-                const text = card.querySelector(".card-text");
-                text.textContent = article.description || "Descripción no disponible.";
-
-                // 🔗 Actualizar botón
-                const button = card.querySelector(".card-button");
-                button.href = article.url;
-                const buttonText = button.querySelector("p");
-                buttonText.textContent = "Leer más ...";
-
-                // 🛠️ Restablecer el ícono de favoritos
-                const favoriteIcon = card.querySelector(".iconimage1 img");
-                favoriteIcon.src = "./assets/icons/emptyFavoriteIcon.svg"; // Ícono predeterminado
-            }
+        articles.slice(0, 5).forEach((article) => {
+            const card = createCard(article);
+            cardsContainer.appendChild(card); // Agregar tarjeta al contenedor
         });
 
         console.log("✅ Las tarjetas se han actualizado correctamente.");
@@ -77,34 +56,86 @@ async function updateCards(category) {
     }
 }
 
+// 🔧 Función para crear una tarjeta
+function createCard(article) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+        <div class="card-image">
+            <a href="${article.url}" target="_blank">
+                <img src="${article.urlToImage || './assets/images/placeholder.jpg'}" alt="${article.title}">
+            </a>
+            <div class="iconimage1">
+                <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
+            </div>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">${article.title}</h3>
+            <p class="card-text">${article.description || 'Descripción no disponible.'}</p>
+            <a href="${article.url}" class="card-button" target="_blank">
+                <p>Leer más ...</p>
+            </a>
+        </div>
+    `;
+
+    // Verificar si el artículo ya está en favoritos y actualizar el ícono
+    const isFavorite = favoriteCards.some((fav) => fav.article.title === article.title);
+    const favoriteIcon = card.querySelector(".iconimage1 img");
+    favoriteIcon.src = isFavorite ? "./assets/icons/fillFavoriteIcon.svg" : "./assets/icons/emptyFavoriteIcon.svg";
+
+    // 📌 Agregar evento de favoritos
+    favoriteIcon.addEventListener("click", () => toggleFavorite(card, article, favoriteIcon));
+
+    return card;
+}
+
+// ⭐ Función para alternar el estado de favoritos
+function toggleFavorite(card, article, icon) {
+    if (icon.src.includes("emptyFavoriteIcon.svg")) {
+        icon.src = "./assets/icons/fillFavoriteIcon.svg"; // Cambiar a ícono lleno
+        favoriteCards.push({ card, article }); // Guardar la tarjeta en favoritos
+        console.log("✅ Artículo marcado como favorito:", article.title);
+    } else {
+        icon.src = "./assets/icons/emptyFavoriteIcon.svg"; // Cambiar a ícono vacío
+        favoriteCards = favoriteCards.filter((fav) => fav.article.title !== article.title); // Remover de favoritos
+        console.log("❌ Artículo eliminado de favoritos:", article.title);
+    }
+
+    // Guardar el estado actualizado en localStorage
+    localStorage.setItem("favoriteCards", JSON.stringify(favoriteCards));
+
+    // Actualizar dinámicamente la vista de favoritos si estamos en ese filtro
+    const currentCategory = document.querySelector(".filters .active")?.getAttribute("data-category");
+    if (currentCategory === "favorites") {
+        showFavoriteCards();
+    }
+}
+
+// 🛠️ Mostrar solo las tarjetas favoritas
+function showFavoriteCards() {
+    console.log("✨ Mostrando solo las tarjetas favoritas...");
+    const cardsContainer = document.querySelector(".card-container");
+    cardsContainer.innerHTML = ""; // Limpiar solo la vista de favoritos
+
+    favoriteCards.forEach(({ article }) => {
+        const clonedCard = createCard(article); // Crear tarjeta clonada
+        cardsContainer.appendChild(clonedCard); // Agregar tarjeta clonada al contenedor
+    });
+}
+
 // 🎯 Escuchar cambios de categoría
 document.addEventListener("campus:category-change", (event) => {
     const category = event.detail.category;
     console.log("🚀 Evento capturado, categoría seleccionada:", category);
 
-    // Actualizar las tarjetas según la categoría seleccionada
-    if (["all", "school", "technology", "corporate"].includes(category)) {
-        updateCards(category);
+    if (category === "favorites") {
+        showFavoriteCards(); // Mostrar solo las favoritas
     } else {
-        console.log("⚠️ Categoría desconocida, no se actualizarán las tarjetas.");
+        updateCards(category); // Actualizar tarjetas según la categoría seleccionada
     }
 });
 
 // 🛠️ Actualizar las tarjetas al cargar la página con el filtro "all"
 document.addEventListener("DOMContentLoaded", () => {
     updateCards("all"); // Inicializar con "All News"
-});
-
-// 🎯 Alternar estado de íconos de favoritos
-document.querySelectorAll(".iconimage1 img").forEach((icon) => {
-    icon.addEventListener("click", () => {
-        // 🌟 Alternar entre estados
-        if (icon.src.includes("emptyFavoriteIcon.svg")) {
-            icon.src = "../assets/icons/fillFavoriteIcon.svg"; // Cambiar a "favorito completo"
-            console.log("✅ Artículo marcado como favorito.");
-        } else {
-            icon.src = "../assets/icons/emptyFavoriteIcon.svg"; // Cambiar a "favoritos vacíos"
-            console.log("❌ Artículo eliminado de favoritos.");
-        }
-    });
 });
