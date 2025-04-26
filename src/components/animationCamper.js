@@ -61,3 +61,22 @@ gsap.to(".logo", {
     repeat: -1,
     ease: "linear"
 });
+
+// 🌟 GSAP: Efecto dinámico con entrada suave
+window.addEventListener("load", () => {
+    // 🎇 Fade-in y escala en el contenido principal
+    gsap.from(".content", {
+        opacity: 0, // Comienza invisible
+        scale: 0.8, // Empieza más pequeño
+        duration: 1.5, // Duración de la animación
+        ease: "power2.out", // Suavidad al aparecer
+    });
+
+    // ✨ Flash inicial en el logo
+    gsap.from(".logo", {
+        opacity: 0, // Empieza invisible
+        scale: 1.2, // Ligeramente más grande al inicio
+        duration: 1.5, // Tiempo de la animación
+        ease: "power1.out", // Movimiento suave
+    });
+});
