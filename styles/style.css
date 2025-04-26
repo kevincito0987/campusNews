@@ -5,3 +5,31 @@
   margin: 0;
   padding: 0;
 }
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../assets/images/bg1.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header h1 {
+  font-size: 4rem;
+  font-family: "Space_Grotesk-Bold", sans-serif;
+  color: var(--color-5);
+  margin-bottom: 50px;
+}
+
+header p {
+  font-size: 1.5rem;
+  font-family: "Space_Grotesk-Regular", sans-serif;
+  color: var(--color-5);
+  margin: 70px;
+}
