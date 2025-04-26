@@ -1,7 +1,9 @@
 # 📚 Campus News – Portal Universitario con Web Components 📚
 
 **Duración estimada:** 2 horas
+
 **Nivel:** Intermedio
+
 **Tecnologías clave:** Web Components, Shadow DOM, Custom Events
 
 ------
