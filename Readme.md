@@ -298,7 +298,7 @@
 
  ### 🔥 **Flujo de Eventos.**
 
-[](./assets/images/factory.png)
+![Sirve para manejar el flujo de eventos](./assets/images/factory.png)
 
 ------
 
