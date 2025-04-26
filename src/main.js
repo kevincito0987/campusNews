@@ -27,3 +27,5 @@ async function getNewsCount(query) {
 
 /* 🎯 Ejecutar la función con una consulta */
 getNewsCount("school"); // 📚 Consulta de noticias escolares
+getNewsCount("technology"); // 💻 Consulta de noticias tecnológicas
+getNewsCount("corporate"); // 🏢 Consulta de noticias de negocios
