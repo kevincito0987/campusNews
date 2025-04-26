@@ -1,47 +1,49 @@
+/* 🎨 Paleta de colores global */
 :root {
-  --color-1: #313338;
-  --color-2: #2B2D31;
-  --color-3: #232428;
-  --color-4: #000000;
-  --color-5: #FFFFFF;
-  --color-6: #B9FF66;
-  --color-7: #191A23;
-  --color-8: #F3F3F3;
-  --color-9: #231F20;
-  --color-10: #898989;
-  --color-11: #0D0C22;
-  --color-12: #292A32;
-  --color-13: #2D8CFF;
-  --color-14: #33475B;
-  --color-15: #FFFFFF30;
-  --color-16: #D81F26;
-  --color-17: #D9D9D9;
-  --color-18: #FF7A59;
-  --color-19: #FF9900;
-  --color-20: #80FFFF;
+    --color-1: #313338;      /* 🌑 Negro suave */
+    --color-2: #2B2D31;      /* 🌒 Gris oscuro */
+    --color-3: #232428;      /* 🌌 Gris profundo */
+    --color-4: #000000;      /* ⚫ Negro puro */
+    --color-5: #FFFFFF;      /* ⚪ Blanco puro */
+    --color-6: #B9FF66;      /* 💚 Verde claro vibrante */
+    --color-7: #191A23;      /* 🌚 Gris nocturno */
+    --color-8: #F3F3F3;      /* 🌕 Blanco apagado */
+    --color-9: #231F20;      /* 🌑 Gris negro suave */
+    --color-10: #898989;     /* 🌫️ Gris medio */
+    --color-11: #0D0C22;     /* 🌠 Azul oscuro */
+    --color-12: #292A32;     /* 🌑 Gris profundo */
+    --color-13: #2D8CFF;     /* 🔵 Azul vibrante */
+    --color-14: #33475B;     /* 🌊 Azul grisáceo */
+    --color-15: #FFFFFF30;   /* ⚪ Blanco translúcido */
+    --color-16: #D81F26;     /* ❤️ Rojo vibrante */
+    --color-17: #D9D9D9;     /* 🌕 Gris claro */
+    --color-18: #FF7A59;     /* 🧡 Naranja vivo */
+    --color-19: #FF9900;     /* 🟠 Naranja cálido */
+    --color-20: #80FFFF;     /* 💎 Cian claro brillante */
 }
 
+/* 🖋️ Importación de fuentes */
 @font-face {
-    font-family: "Space_Grotesk-Bold";
+    font-family: "Space_Grotesk-Bold";     /* 💪 Estilo de texto en negrita */
     src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf);
 }
 
 @font-face {
-    font-family: "Space_Grotesk-Regular";
+    font-family: "Space_Grotesk-Regular";  /* ✏️ Estilo regular para texto general */
     src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Regular.ttf);
 }
 
 @font-face {
-    font-family: "Space_Grotesk-Medium";
+    font-family: "Space_Grotesk-Medium";   /* 🌟 Texto con énfasis moderado */
     src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf);
 }
 
 @font-face {
-    font-family: "Space_Grotesk-Light";
+    font-family: "Space_Grotesk-Light";    /* 💨 Texto ligero y elegante */
     src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-Light.ttf);
 }
 
 @font-face {
-    font-family: "Space_Grotesk-SemiBold";
+    font-family: "Space_Grotesk-SemiBold"; /* ✨ Semi negrita para titulares destacados */
     src: url(../assets/fonts/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf);
 }
