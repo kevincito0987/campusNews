@@ -3,25 +3,25 @@
 **Duración estimada:** 2 horas
 **Nivel:** Intermedio
 **Tecnologías clave:** Web Components, Shadow DOM, Custom Events
- 
- ------
- 
+
+------
+
   ## 🧠 Introducción
- 
+
   **Campus News** es una aplicación web modular que simula un portal de noticias universitarias, construido completamente con **Web Components** y **Shadow DOM**. Cada parte de la interfaz está desacoplada y encapsulada, lo que facilita la mantenibilidad y escalabilidad del proyecto.
   La app se comunica internamente mediante **eventos personalizados**, y está pensada como práctica ideal para reforzar conceptos de desarrollo frontend moderno.
- 
-  ------
- 
+
+------
+
   ## 🎯 Objetivos
- 
+
  - Desarrollar una SPA modular basada en Web Components.
  - Aplicar buenas prácticas de arquitectura frontend moderna.
  - Comunicar componentes desacoplados mediante eventos personalizados.
  - Encapsular estilos usando Shadow DOM.
  - Construir una experiencia universitaria rica e interactiva.
 
- ------
+------
 
  ## 🛠️ Tecnologías utilizadas
 
@@ -32,7 +32,7 @@
  - **GitHub Pages** (para despliegue)
  - **Figma** (para diseño base)
 
- ------
+------
 
  ## 🎨 Diseño base (Figma)
 
@@ -40,7 +40,7 @@
 
  🔗 [Diseño original en Figma](https://www.figma.com/design/ecNlAFrpeQwcQlMe7zzWTj/Positivus-Landing-Page-Design--Community-?node-id=25-145&p=f&t=vzuXFHmDJHOF43CY-0)
 
- ------
+------
 
  ## 📑 Tabla de Contenidos
 
@@ -57,7 +57,7 @@
  - [Contribuyentes](#👥-contribuyentes)
  - [Frase estelar](#🌟-frase-estelar)
 
- ------
+------
 
  ## 🧱 Estructura HTML esperada
 
@@ -78,7 +78,7 @@
  - **`<campus-news-detail>`**: Detalles del artículo seleccionado.
  - **`<campus-debug-panel>`**: Panel de depuración (estado interno, toggle).
 
- ------
+------
 
  ## 🗂️ Datos de ejemplo
 
@@ -97,7 +97,7 @@
  ];
  ```
 
- ------
+------
  ## 🛰️ Eventos personalizados
 
  ### 📂 Cambio de categoría
@@ -135,7 +135,7 @@
  }));
  ```
 
- ------
+------
 
  ## 🧩 Shadow DOM y estilos
 
@@ -166,7 +166,7 @@
  `;
  ```
 
- ------
+------
 
  ## 🔄 Flujo de trabajo
 
@@ -177,7 +177,7 @@
  5. Crear `<campus-debug-panel>`: visualiza estado interno y toggle.
  6. En `<campus-news-app>`: orquestar estado global y manejar todos los eventos.
 
- ------
+------
 
  ### 🎭 **Patrón de Diseño Pub/Sub Aplicado al Proyecto**
 
@@ -300,9 +300,113 @@
 
     	  ![image-20250425174134036](/home/camper/.config/Typora/typora-user-images/image-20250425174134036.png)
 
- ------
+------
 
- 
+##  📰 Consumo de API - NewsAPI.org
+
+La aplicación **Campus News** puede enriquecerse con noticias reales integrando [**NewsAPI.org**](https://newsapi.org/), una API pública que ofrece titulares en tiempo real de múltiples fuentes reconocidas a nivel mundial.
+
+### 🔧 Configuración Básica
+
+1. Crea una cuenta en newsapi.org.
+2. Copia tu **API Key** desde el panel de usuario.
+3. Usa tu clave dentro del proyecto de forma segura:
+
+```
+js
+
+
+CopiarEditar
+const NEWS_API_KEY = 'TU_API_KEY_AQUÍ';
+```
+
+### 🔄 Ejemplo de Fetch
+
+```
+jsCopiarEditarconst url = `https://newsapi.org/v2/top-headlines?country=mx&category=technology&pageSize=5&apiKey=${NEWS_API_KEY}`;
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    const articles = data.articles.map((item, index) => ({
+      id: index + 1,
+      title: item.title,
+      summary: item.description,
+      content: `<p>${item.content}</p>`,
+      author: item.author || 'Desconocido',
+      date: new Date(item.publishedAt).toLocaleDateString(),
+      category: item.source.name
+    }));
+    // Aquí puedes pasar los artículos a tu estado global
+    console.log(articles);
+  })
+  .catch(err => console.error('Error al consumir NewsAPI:', err));
+```
+
+### 🧠 Mejores usos
+
+#### 📌 1. Reemplazo de datos mock
+
+Sustituye los datos estáticos (`campusArticles`) con artículos reales para un entorno más realista:
+
+```
+js
+
+
+CopiarEditar
+this.state.articles = articlesFromAPI;
+```
+
+#### 🎯 2. Categorías dinámicas
+
+Relaciona las categorías locales con categorías disponibles en la API (`technology`, `science`, `sports`, etc.) para que el filtro sea más relevante:
+
+```
+js
+
+
+CopiarEditar
+const url = `https://newsapi.org/v2/top-headlines?category=science&country=mx&apiKey=${NEWS_API_KEY}`;
+```
+
+#### 🔁 3. Actualización automática
+
+Integra un refresco periódico para mostrar noticias recientes cada cierto tiempo:
+
+```
+jsCopiarEditarsetInterval(() => {
+  fetchLatestNews(); // función que hace el fetch y actualiza el estado
+}, 60000); // cada minuto
+```
+
+#### 🧩 4. Modo híbrido
+
+Muestra datos locales por defecto y recurre a la API solo si hay conexión a internet o cuando el usuario hace clic en "Noticias externas":
+
+```
+jsCopiarEditarif (navigator.onLine) {
+  fetchExternalNews();
+} else {
+  this.state.articles = campusArticles;
+}
+```
+
+#### 🧪 5. Panel de depuración en tiempo real
+
+Muestra en el `<campus-debug-panel>` si los artículos vienen del mock o desde la API, útil para testing y evaluación:
+
+```
+jsCopiarEditarthis.dispatchEvent(new CustomEvent("campus:debug-update", {
+  detail: {
+    source: 'NewsAPI',
+    total: articles.length
+  },
+  bubbles: true,
+  composed: true
+}));
+```
+
+------
 
  ## ✅ Criterios de evaluación
 
@@ -316,7 +420,7 @@
  | **UX & accesibilidad**     | Responsivo, roles ARIA, interacción intuitiva    | 20      |
  | **Total**                  |                                                  | **100** |
 
- ------
+------
 
  ## 👥 Contribuyentes
 
@@ -326,7 +430,7 @@
  | ----------------- | -------------------------------------------------- |
  | kevincito0987     | [@kevincito0987](https://github.com/kevincito0987) |
 
- ------
+------
 
  ## 🌟 Frase estelar
 
