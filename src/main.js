@@ -94,3 +94,17 @@ document.addEventListener("campus:category-change", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
     updateCards("all"); // Inicializar con "All News"
 });
+
+// 🎯 Alternar estado de íconos de favoritos
+document.querySelectorAll(".iconimage1 img").forEach((icon) => {
+    icon.addEventListener("click", () => {
+        // 🌟 Alternar entre estados
+        if (icon.src.includes("emptyFavoriteIcon.svg")) {
+            icon.src = "../assets/icons/fillFavoriteIcon.svg"; // Cambiar a "favorito completo"
+            console.log("✅ Artículo marcado como favorito.");
+        } else {
+            icon.src = "../assets/icons/emptyFavoriteIcon.svg"; // Cambiar a "favoritos vacíos"
+            console.log("❌ Artículo eliminado de favoritos.");
+        }
+    });
+});
