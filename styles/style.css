@@ -302,3 +302,72 @@ main::before {
 
   }
 }
+@media screen and (min-width: 360px) and (max-width: 390px) {
+  
+  header {
+      height: auto; /* Eliminar el fondo de la cabecera */
+  }
+  
+  header h1 {
+      font-size: 2rem; /* Ajustar el tamaño del título */
+      margin-top: 30px;
+  }
+  header p {
+    width: 80%;
+    font-size: 0.8rem; /* Ajustar el tamaño de la descripción */
+    margin-top: -40px;
+    margin-bottom: 90px;
+  }
+
+  body {
+      font-size: 16px; /* Tamaño de fuente ideal para estas pantallas */
+      line-height: 1.5; /* Espaciado cómodo para legibilidad */
+      background-color: var(--color-3); /* Cambiar el fondo de la página */
+  }
+
+  filters-component {
+    display: flex;
+    flex-direction: column;
+    margin: 140px 0 20px 460px; /* Reducir el espacio entre los filtros */
+    width: 10%; /* Ajustar el ancho del componente para que se adapte a las pantallas pequeñas */
+  }
+
+  .card {
+      flex-direction: column; /* Mantener diseño vertical */
+      width: 95%; /* Ajustar ligeramente el ancho */
+      margin: 10px auto; /* Centrar las tarjetas */
+      padding: 15px; /* Espaciado más amplio para comodidad visual */
+  }
+
+  .card-image {
+      height: 200px; /* Imagen más destacada */
+      border-radius: 10px; /* Bordes redondeados */
+  }
+
+  .card-title {
+      font-size: 1.2rem; /* Tamaño del título ajustado */
+      text-align: center; /* Centrar texto */
+  }
+
+  .card-text {
+      font-size: 1rem; /* Ajustar tamaño de descripción */
+      line-height: 1.4; /* Mejorar la legibilidad */
+  }
+
+  .card-button {
+      font-size: 0.9rem; /* Hacer el botón ligeramente más grande */
+      padding: 10px 15px; /* Espaciado óptimo para interacción táctil */
+  }
+
+  .iconimage1 {
+      width: 50px; /* Tamaño del ícono ajustado */
+      height: 50px;
+      top: 20px; /* Centrar el ícono */
+      right: 20px;
+  }
+
+  .iconimage1 img {
+      width: 25px; /* Tamaño del ícono ajustado */
+      height: auto;
+  }
+}
