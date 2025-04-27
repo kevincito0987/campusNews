@@ -102,9 +102,10 @@ function toggleFavorite(card, article, icon) {
         favoriteCards = favoriteCards.filter((fav) => fav.title !== article.title); // Remover de favoritos
         console.log("❌ Artículo eliminado de favoritos:", article.title);
 
+        // Actualizar la vista de favoritos de inmediato
         const currentCategory = document.querySelector(".filters .active")?.getAttribute("data-category");
         if (currentCategory === "favorites") {
-            showFavoriteCards(); // Actualizar favoritos inmediatamente
+            showFavoriteCards();
         }
     }
 
@@ -115,7 +116,7 @@ function toggleFavorite(card, article, icon) {
 function showFavoriteCards() {
     console.log("✨ Mostrando solo las tarjetas favoritas...");
     const cardsContainer = document.querySelector(".card-container");
-    cardsContainer.innerHTML = "";
+    cardsContainer.innerHTML = ""; // Limpiar el contenedor
 
     favoriteCards.forEach((fav) => {
         const card = createCard({
