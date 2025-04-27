@@ -446,3 +446,41 @@ main::before {
       right: 15px;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 1114px) {
+  
+  header {
+      height: auto; /* Eliminar el fondo de la cabecera */
+  }
+  header h1 {
+      font-size: 3rem; /* Ajustar el tamaño del título */
+      margin-top: 50px;
+  }
+
+  body {
+      font-size: 18px; /* Aumentar el tamaño de fuente */
+      background: var(--color-3); /* Cambiar el fondo de la página */
+      line-height: 1.7; /* Mejorar la separación para comodidad visual */
+  }
+  filters-component {
+      margin: 130px 0 20px 120px; /* Reducir el espacio entre los filtros */
+  }
+
+  .card-container {
+      margin-top: -50px; /* Reducir el espacio entre las tarjetas */
+  }
+
+  .card {
+      flex-direction: column; /* Mantener el diseño vertical */
+      width: 90%; /* Ajustar el ancho de las tarjetas */
+      margin: 15px auto; /* Centrar y dar espacio entre tarjetas */
+      padding: 20px; /* Espaciado más cómodo */
+      border-radius: 12px; /* Bordes redondeados para un diseño más suave */
+  }
+  .iconimage1 {
+      width: 60px; /* Ajustar el tamaño del ícono */
+      height: 60px;
+      top: 20px; /* Centrar el ícono */
+      right: 20px;
+  }
+}
+
