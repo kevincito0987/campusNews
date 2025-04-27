@@ -1,112 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Campus News</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!-- 🌟 Estilo principal -->
-        <link rel="stylesheet" href="./styles/style.css">
-        
-        <!-- 🌍 Favicon del sitio -->
-        <link rel="shortcut icon" href="./assets/icons/campusLogo.svg" type="image/x-icon">
+<head>
+    <title>Campus News</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 🌟 Estilo principal -->
+    <link rel="stylesheet" href="./styles/style.css">
     
-        <!-- 🛠️ Lógica del proyecto -->
-        <script type="module" src="./src/main.js" defer></script>
-        <script type="module" src="./src/components/filters.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <h1>🌎  Camper News 🚀 Explorando Nuevos Horizontes en la Era Digital 🌎
-            </h1>
-            <p>🤖🧠  En Camper News, creemos que la aventura evoluciona al ritmo de la innovación. Cada noticia, cada historia y cada descubrimiento es un portal hacia el futuro, impulsado por inteligencia artificial, exploración digital y nuevas fronteras cuánticas. Prepárate para navegar un mundo donde la tecnología y la aventura se fusionan  🌐⚛️.</p>
-        </header>
-        <main>
-            <div class="mainContent">
-                <filters-component></filters-component>
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="#"><img src="./assets/images/noticia1.jpeg" alt="Noticia 1" target="_blank"></a>
-                            <div class="iconimage1">
-                                <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">La Inteligencia Artificial Redefine la Exploración de Rutas 🧠🛤️</h3>
-                            <p class="card-text">Nuevas plataformas basadas en IA están ayudando a los aventureros a descubrir rutas personalizadas, optimizando la seguridad, los paisajes y la sostenibilidad. El futuro de los viajes empieza a escribirse con algoritmos inteligentes.</p>
-                            <a href="#" class="card-button" target="_blank">
-                                <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
-                                <p>Learn More ...</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="#" target="_blank"><img src="./assets/images/noticia2.jpg" alt="Noticia 2"></a>
-                            <div class="iconimage1">
-                                <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Tendencias 2025: Viajes Autónomos con Vehículos Inteligentes 🚐🤖</h3>
-                            <p class="card-text">El avance de los vehículos autónomos para viajes largos ya es una realidad. Descubre cómo la tecnología está transformando el concepto de "carretera abierta" en una experiencia totalmente automatizada y conectada.</p>
-                            <a href="#" class="card-button" target="_blank">
-                                <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
-                                <p>Learn More ...</p>
-                            </a>
+    <!-- 🌍 Favicon del sitio -->
+    <link rel="shortcut icon" href="./assets/icons/campusLogo.svg" type="image/x-icon">
+    
+    <!-- 🛠️ Lógica del proyecto -->
+    <script type="module" src="./src/main.js" defer></script>
+    <script type="module" src="./src/components/filters.js" defer></script>
+</head>
+<body>
+    <header>
+        <!-- ✨ Título principal -->
+        <h1>🌎 Camper News 🚀 Explorando Nuevos Horizontes en la Era Digital 🌎</h1>
+        <!-- 📝 Descripción del sitio -->
+        <p>🤖🧠 En Camper News, creemos que la aventura evoluciona al ritmo de la innovación. Cada noticia, cada historia y cada descubrimiento es un portal hacia el futuro, impulsado por inteligencia artificial, exploración digital y nuevas fronteras cuánticas. Prepárate para navegar un mundo donde la tecnología y la aventura se fusionan 🌐⚛️.</p>
+    </header>
+    
+    <main>
+        <!-- 💡 Contenedor Principal -->
+        <div class="mainContent">
+            <!-- 🔍 Componente de filtros -->
+            <filters-component></filters-component>
+            
+            <!-- 🃏 Contenedor de tarjetas -->
+            <div class="card-container">
+                
+                <!-- 🔖 Tarjeta #1 -->
+                <div class="card">
+                    <div class="card-image">
+                        <!-- 🌐 Imagen de la tarjeta -->
+                        <a href="#"><img src="./assets/images/noticia1.jpeg" alt="Noticia 1" target="_blank"></a>
+                        <!-- ⭐ Icono de favoritos -->
+                        <div class="iconimage1">
+                            <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="#" target="_blank"><img src="./assets/images/noticia3.jpg" alt="Noticia 3"></a>
-                            <div class="iconimage1">
-                                <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Campamentos Cuánticos: La Nueva Era del Outdoor Tech ⚛️🏕️</h3>
-                            <p class="card-text">La computación cuántica impulsa nuevas tecnologías para acampar: desde sistemas de predicción meteorológica ultra precisos hasta dispositivos de energía limpia portátil. El futuro outdoor será más inteligente que nunca.</p>
-                            <a href="#" class="card-button" target="_blank">
-                                <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
-                                <p>Learn More ...</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="#" target="_blank"><img src="./assets/images/noticia4.jpg" alt="Noticia 4"></a>
-                            <div class="iconimage1">
-                                <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Exploradores Virtuales: Cómo el Metaverso Reinventa la Aventura 🌐🧭</h3>
-                            <p class="card-text">Con nuevas experiencias inmersivas en realidad virtual, ahora puedes explorar montañas, selvas y océanos sin salir de casa. ¿Será este el inicio de una nueva forma de conectar con el planeta?</p>
-                            <a href="#" class="card-button" target="_blank">
-                                <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
-                                <p>Learn More ...</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-image">
-                            <a href="#" target="_blank"><img src="./assets/images/noticia5.jpeg" alt="Noticia 5"></a>
-                            <div class="iconimage1">
-                                <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Baterías de Grafeno: Energía Infinita para Viajeros del Futuro ⚡🔋</h3>
-                            <p class="card-text">La revolución de las baterías de grafeno promete cargar tus dispositivos en segundos y durar días enteros. Esta tecnología cambiará la forma en que los campers y exploradores planean sus expediciones.</p>
-                            <a href="#" class="card-button" target="_blank">
-                                <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
-                                <p>Learn More ...</p>
-                            </a>
-                        </div>
+                    <div class="card-content">
+                        <h3 class="card-title">La Inteligencia Artificial Redefine la Exploración de Rutas 🧠🛤️</h3>
+                        <p class="card-text">Nuevas plataformas basadas en IA están ayudando a los aventureros a descubrir rutas personalizadas, optimizando la seguridad, los paisajes y la sostenibilidad. El futuro de los viajes empieza a escribirse con algoritmos inteligentes.</p>
+                        <!-- 📖 Botón para más información -->
+                        <a href="#" class="card-button" target="_blank">
+                            <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
+                            <p>Learn More ...</p>
+                        </a>
                     </div>
                 </div>
+
+                <!-- 🔖 Tarjeta #2 -->
+                <div class="card">
+                    <div class="card-image">
+                        <a href="#" target="_blank"><img src="./assets/images/noticia2.jpg" alt="Noticia 2"></a>
+                        <div class="iconimage1">
+                            <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Tendencias 2025: Viajes Autónomos con Vehículos Inteligentes 🚐🤖</h3>
+                        <p class="card-text">El avance de los vehículos autónomos para viajes largos ya es una realidad. Descubre cómo la tecnología está transformando el concepto de "carretera abierta" en una experiencia totalmente automatizada y conectada.</p>
+                        <a href="#" class="card-button" target="_blank">
+                            <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
+                            <p>Learn More ...</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 🔖 Tarjeta #3 -->
+                <div class="card">
+                    <div class="card-image">
+                        <a href="#" target="_blank"><img src="./assets/images/noticia3.jpg" alt="Noticia 3"></a>
+                        <div class="iconimage1">
+                            <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Campamentos Cuánticos: La Nueva Era del Outdoor Tech ⚛️🏕️</h3>
+                        <p class="card-text">La computación cuántica impulsa nuevas tecnologías para acampar: desde sistemas de predicción meteorológica ultra precisos hasta dispositivos de energía limpia portátil. El futuro outdoor será más inteligente que nunca.</p>
+                        <a href="#" class="card-button" target="_blank">
+                            <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
+                            <p>Learn More ...</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 🔖 Tarjeta #4 -->
+                <div class="card">
+                    <div class="card-image">
+                        <a href="#" target="_blank"><img src="./assets/images/noticia4.jpg" alt="Noticia 4"></a>
+                        <div class="iconimage1">
+                            <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Exploradores Virtuales: Cómo el Metaverso Reinventa la Aventura 🌐🧭</h3>
+                        <p class="card-text">Con nuevas experiencias inmersivas en realidad virtual, ahora puedes explorar montañas, selvas y océanos sin salir de casa. ¿Será este el inicio de una nueva forma de conectar con el planeta?</p>
+                        <a href="#" class="card-button" target="_blank">
+                            <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
+                            <p>Learn More ...</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 🔖 Tarjeta #5 -->
+                <div class="card">
+                    <div class="card-image">
+                        <a href="#" target="_blank"><img src="./assets/images/noticia5.jpeg" alt="Noticia 5"></a>
+                        <div class="iconimage1">
+                            <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Baterías de Grafeno: Energía Infinita para Viajeros del Futuro ⚡🔋</h3>
+                        <p class="card-text">La revolución de las baterías de grafeno promete cargar tus dispositivos en segundos y durar días enteros. Esta tecnología cambiará la forma en que los campers y exploradores planean sus expediciones.</p>
+                        <a href="#" class="card-button" target="_blank">
+                            <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
+                            <p>Learn More ...</p>
+                        </a>
+                    </div>
+                </div>
+
             </div>
-        </main>
-    </body>
+        </div>
+    </main>
+</body>
 </html>
