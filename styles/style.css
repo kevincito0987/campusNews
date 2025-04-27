@@ -231,3 +231,74 @@ main::before {
   font-family: "Space_Grotesk-Medium", sans-serif;
   color: var(--color-5);
 }
+
+@media screen and (max-width: 320px) {
+  
+  header {
+      height: auto; /* Eliminar el fondo de la cabecera */
+  }
+  
+  header h1 {
+      font-size: 2rem; /* Ajustar el tamaño del título */
+      margin-top: 30px;
+  }
+
+  header p {
+    width: 80%;
+    font-size: 0.8rem; /* Ajustar el tamaño de la descripción */
+    margin-top: -40px;
+    margin-bottom: 90px;
+  }
+
+  body {
+      font-size: 14px; /* Ajustar el tamaño de fuente para pantallas pequeñas */
+      line-height: 1.4; /* Mejorar la legibilidad */
+      background-color: var(--color-3); /* Cambiar el fondo de la página */
+  }
+
+  filters-component {
+    display: flex;
+    flex-direction: column;
+    margin: 140px 0 20px 460px; /* Reducir el espacio entre los filtros */
+    width: 10%; /* Ajustar el ancho del componente para que se adapte a las pantallas pequeñas */
+  }
+
+  .card {
+      flex-direction: column; /* Cambiar las tarjetas a diseño vertical */
+      width: 100%; /* Que ocupen todo el ancho disponible */
+      padding: 10px; /* Reducir el padding para ajustarlo al espacio */
+  }
+
+  .card-image {
+      height: 150px; /* Tamaño más pequeño para las imágenes */
+  }
+
+  .card-title {
+      font-size: 1rem; /* Reducir el tamaño del título */
+      text-align: center; /* Centrar el texto */
+  }
+
+  .card-text {
+      font-size: 0.9rem; /* Ajustar el tamaño de la descripción */
+  }
+
+  .card-button {
+      font-size: 0.8rem; /* Hacer el botón más pequeño */
+      padding: 5px 10px; /* Reducir el padding del botón */
+  }
+  .iconimage1 {
+      width: 40px; /* Reducir el tamaño del ícono */
+      height: 40px;
+      top: 15px; /* Centrar el ícono */
+      right: 15px;
+  }
+
+  .iconimage1 img {
+      width: 20px; /* Reducir el tamaño del ícono */
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+      transform: scale(1.2); /* Aumentar el tamaño del ícono al pasar el ratón */
+
+  }
+}
