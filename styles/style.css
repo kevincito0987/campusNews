@@ -371,3 +371,78 @@ main::before {
       height: auto;
   }
 }
+@media screen and (min-width: 393px) and (max-width: 440px) {
+  
+  header {
+      height: auto; /* Eliminar el fondo de la cabecera */
+  }
+
+  header h1 {
+      font-size: 2.5rem; /* Ajustar el tamaño del título */
+      margin-top: 30px;
+  }
+  header p {
+    width: 80%;
+    font-size: 1rem; /* Ajustar el tamaño de la descripción */
+    margin-top: -40px;
+    margin-bottom: 120px;
+  }
+
+  body {
+      font-size: 17px; /* Aumentar ligeramente el tamaño de fuente */
+      line-height: 1.6; /* Mejorar la separación para comodidad visual */
+      background-color: var(--color-3); /* Cambiar el fondo de la página */
+  }
+
+  filters-component {
+    display: flex;
+    flex-direction: column;
+    margin: 130px 0 20px 460px; /* Reducir el espacio entre los filtros */
+    width: 10%; /* Ajustar el ancho del componente para que se adapte a las pantallas pequeñas */
+  }
+
+  .card-container {
+      margin-top: -50px; /* Reducir el espacio entre las tarjetas */
+  }
+
+  .card {
+      flex-direction: column; /* Mantener el diseño vertical */
+      width: 90%; /* Ajustar el ancho de las tarjetas */
+      margin: 15px auto; /* Centrar y dar espacio entre tarjetas */
+      padding: 20px; /* Espaciado más cómodo */
+      border-radius: 12px; /* Bordes redondeados para un diseño más suave */
+  }
+
+  .card-image {
+      height: 220px; /* Imagen más destacada */
+      border-radius: 8px; /* Ajustar el redondeo de la imagen */
+  }
+
+  .card-title {
+      font-size: 1.4rem; /* Título ligeramente más grande */
+      text-align: center; /* Centrar el texto */
+  }
+
+  .card-text {
+      font-size: 1.1rem; /* Ajustar el tamaño de la descripción */
+      line-height: 1.5; /* Espaciado cómodo para texto largo */
+  }
+
+  .card-button {
+      font-size: 1rem; /* Botón de tamaño accesible */
+      padding: 12px 18px; /* Ajustar el padding del botón */
+      border-radius: 8px; /* Bordes redondeados para interacción táctil */
+  }
+
+  .iconimage1 img {
+      width: 28px; /* Ajustar el tamaño del ícono */
+      height: auto;
+  }
+
+  .iconimage1 {
+      width: 50px; /* Ajustar el tamaño del ícono */
+      height: 50px;
+      top: 15px; /* Centrar el ícono */
+      right: 15px;
+  }
+}
