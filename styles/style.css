@@ -1,486 +1,478 @@
-@import url(./variables.css);
+@import url(./variables.css); /* 🌈 Variables globales de estilo */
 
+/* 🔄 Reset global */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box; /* 📦 Asegura consistencia de tamaño */
+    margin: 0; /* 🚫 Elimina márgenes por defecto */
+    padding: 0; /* 🚫 Elimina rellenos por defecto */
 }
 
+/* 🌟 Estilos del encabezado */
 header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  background-image: url(../assets/images/bg1.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  bottom: -10px;
-  /* 🎞️ Animación para cambiar fondo */
-  animation: backgroundChange 540s infinite; /* 540s = 3 minutos por imagen */
+    display: flex; /* 📐 Activa flexbox para alineación */
+    flex-direction: column; /* ⬆ Organiza el contenido en columna */
+    align-items: center; /* 🎯 Centra los elementos horizontalmente */
+    justify-content: center; /* 🎯 Centra los elementos verticalmente */
+    text-align: center; /* 📄 Texto centrado */
+    width: 100%; /* 📏 Ocupa todo el ancho */
+    height: 100vh; /* 📏 Ocupa toda la altura de la pantalla */
+    background-image: url(../assets/images/bg1.png); /* 🌄 Imagen inicial de fondo */
+    background-position: center center; /* 📌 Posiciona al centro */
+    background-repeat: no-repeat; /* 🚫 Evita que se repita */
+    background-size: cover; /* 🎨 Ajusta para cubrir el contenedor */
+    animation: backgroundChange 540s infinite; /* 🎞️ Cambia el fondo cada 3 minutos */
 }
 
+/* 🎞️ Animación para el cambio de fondo */
 @keyframes backgroundChange {
-  0%, 33.33% {
-    background-image: url(../assets/images/bg1.png);
-  }
-  33.34%, 66.66% {
-    background-image: url(../assets/images/bg.png);
-  }
-  66.67%, 100% {
-    background-image: url(../assets/images/bg2.jpeg);
-  }
+    0%, 33.33% {
+        background-image: url(../assets/images/bg1.png); /* 🌄 Primera imagen */
+    }
+    33.34%, 66.66% {
+        background-image: url(../assets/images/bg.png); /* 🌄 Segunda imagen */
+    }
+    66.67%, 100% {
+        background-image: url(../assets/images/bg2.jpeg); /* 🌄 Tercera imagen */
+    }
 }
 
-
+/* ✨ Estilos para el título del encabezado */
 header h1 {
-  font-size: 4rem;
-  font-family: "Space_Grotesk-Bold", sans-serif;
-  color: var(--color-5);
-  margin-bottom: 50px;
+    font-size: 4rem; /* 📏 Título grande y prominente */
+    font-family: "Space_Grotesk-Bold", sans-serif; /* 🖋️ Fuente llamativa */
+    color: var(--color-5); /* 🎨 Color del texto */
+    margin-bottom: 50px; /* 🖼️ Espacio debajo del título */
 }
 
+/* 📝 Estilos para el párrafo del encabezado */
 header p {
-  font-size: 1.5rem;
-  font-family: "Space_Grotesk-Regular", sans-serif;
-  color: var(--color-5);
-  margin: 70px;
+    font-size: 1.5rem; /* 📏 Texto legible */
+    font-family: "Space_Grotesk-Regular", sans-serif; /* 🖋️ Fuente secundaria */
+    color: var(--color-5); /* 🎨 Color del texto */
+    margin: 70px; /* 🖼️ Espacio alrededor del párrafo */
 }
 
+/* 🌟 Estilos del contenedor principal */
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  background: var(--color-3);
+    display: flex; /* 📐 Activa flexbox para alineación */
+    flex-direction: column; /* ⬆ Organiza el contenido en columna */
+    align-items: center; /* 🎯 Centra los elementos horizontalmente */
+    justify-content: center; /* 🎯 Centra los elementos verticalmente */
+    text-align: center; /* 📄 Texto centrado */
+    width: 100%; /* 📏 Ocupa todo el ancho */
+    height: 100%; /* 📏 Altura dinámica según el contenido */
+    background: var(--color-3); /* 🎨 Fondo con color primario */
 }
 
+/* 🎞️ Animación para la aparición suave */
 @keyframes fadeIn {
-  0% {
-    opacity: 0; /* 👻 Comienza invisible */
-    transform: translateY(20px); /* 🔽 Desplazamiento inicial hacia abajo */
-  }
-  100% {
-    opacity: 1; /* ✨ Totalmente visible */
-    transform: translateY(0); /* ✅ Posición final */
-  }
+    0% {
+        opacity: 0; /* 👻 Comienza invisible */
+        transform: translateY(20px); /* 🔽 Desplazamiento inicial hacia abajo */
+    }
+    100% {
+        opacity: 1; /* ✨ Totalmente visible */
+        transform: translateY(0); /* ✅ Posición final */
+    }
 }
 
 /* 🌄 Pseudo-elemento para degradado */
 main::before {
-  content: ""; /* 🌀 Elemento vacío para aplicar el fondo */
-  bottom: 0; /* 📍 Lo coloca al fondo */
-  left: 0; /* 📍 Lo posiciona en la izquierda */
-  width: 100%; /* 📏 Ancho extendido */
-  margin-top: -700px; /* 📏 Ajuste de posición */
-  height: 700px; /* 📏 Altura para degradado */
-  background: linear-gradient(180deg, transparent 0%, var(--color-3) 100%); /* 🎨 Degradado */
+    content: ""; /* 🌀 Elemento vacío para aplicar el fondo */
+    bottom: 0; /* 📍 Lo coloca al fondo */
+    left: 0; /* 📍 Lo posiciona en la izquierda */
+    width: 100%; /* 📏 Ocupa todo el ancho */
+    margin-top: -700px; /* 📏 Ajuste de posición */
+    height: 700px; /* 📏 Altura para el degradado */
+    background: linear-gradient(180deg, transparent 0%, var(--color-3) 100%); /* 🎨 Aplicación del degradado */
 }
 
 /* 🏕️ Contenedor principal */
 .mainContent {
-  display: flex; /* 📐 Activa flexbox */
-  flex-direction: column; /* ⬆ Organiza los elementos en columna */
-  justify-content: center; /* 🎯 Centra verticalmente */
-  align-items: center; /* 📍 Alineación centrada */
-  width: 100%; /* 📏 Ocupa todo el ancho */
-  position: relative; /* 📌 Necesario para superposiciones */
-  margin-top: -250px; /* 📏 Ajuste de posición */
+    display: flex; /* 📐 Activa flexbox */
+    flex-direction: column; /* ⬆ Organiza los elementos en columna */
+    justify-content: center; /* 🎯 Centra verticalmente */
+    align-items: center; /* 🎯 Centra horizontalmente */
+    width: 100%; /* 📏 Ocupa todo el ancho */
+    position: relative; /* 📌 Posición relativa para elementos superpuestos */
+    margin-top: -250px; /* 📏 Ajuste para elevar el contenido */
 }
 
+/* 🃏 Contenedor de las tarjetas */
 .card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 50px;
-  width: 90%;
-  height: 80%;
-  margin-bottom: 40px;
-  padding: 30px;
+    display: flex; /* 📐 Activa flexbox */
+    flex-direction: column; /* ⬆ Organiza las tarjetas en columna */
+    align-items: center; /* 🎯 Centra horizontalmente */
+    justify-content: center; /* 🎯 Centra verticalmente */
+    gap: 20px; /* ✨ Espaciado entre las tarjetas */
+    margin-top: 50px; /* 🖼️ Espacio superior */
+    width: 90%; /* 📏 Ancho dinámico */
+    height: 80%; /* 📏 Altura dinámica */
+    margin-bottom: 40px; /* 🖼️ Espacio inferior */
+    padding: 30px; /* ✨ Espaciado interno */
 }
 
+/* ✨ Estilo de las tarjetas */
 .card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  width: 90%;
-  height: auto;
-  margin-bottom: 40px;
-  padding: 30px;
-  border-radius: 30px;
-
-  /* ✨ Sombra blanca tenue */
-  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.5);
-
-  /* 🌟 Activar la animación */
-  animation: fadeIn 0.8s ease-in-out; /* Duración y suavidad de la animación */
+    display: flex; /* 📐 Activa flexbox */
+    flex-direction: row; /* ⬅ Diseño horizontal */
+    align-items: center; /* 🎯 Centra verticalmente */
+    justify-content: center; /* 🎯 Centra horizontalmente */
+    gap: 20px; /* ✨ Espaciado entre elementos */
+    width: 90%; /* 📏 Ancho dinámico */
+    height: auto; /* 📏 Altura adaptativa */
+    margin-bottom: 40px; /* 🖼️ Espacio inferior */
+    padding: 30px; /* ✨ Espaciado interno */
+    border-radius: 30px; /* 🎨 Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.5); /* 💡 Sombra suave */
+    animation: fadeIn 0.8s ease-in-out; /* 🎞️ Aparición suave */
 }
 
+/* 🌟 Estilo al pasar el cursor sobre la tarjeta */
 .card:hover {
-  box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.5);
-  background: var(--color-14);
-  transition: box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.5); /* 💡 Sombra más intensa */
+    background: var(--color-14); /* 🎨 Cambiar el fondo */
+    transition: box-shadow 0.3s ease, background 0.3s ease; /* ✨ Transiciones suaves */
 }
 
+/* 🎨 Estilos de la imagen en la tarjeta */
 .card-image {
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  position: relative;
+  gap: 10px; /* 🖼️ Espaciado entre los elementos internos */
+  width: 100%; /* 📏 Ocupa todo el ancho disponible */
+  height: 100%; /* 📏 Ocupa toda la altura disponible */
+  padding: 10px; /* 🖼️ Espaciado interno */
+  position: relative; /* 📌 Posicionamiento relativo para elementos superpuestos */
 }
 
 .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
+  width: 100%; /* 📏 Imagen a todo el ancho del contenedor */
+  height: 100%; /* 📏 Imagen a toda la altura del contenedor */
+  object-fit: cover; /* 📸 Ajuste perfecto sin deformación */
+  border-radius: 16px; /* 🎨 Bordes redondeados */
 }
 
+.card-image img:hover {
+  filter: brightness(1.1); /* 🌟 Efecto de brillo al pasar el ratón */
+  transition: filter 0.3s ease; /* ✨ Transición suave */
+}
+
+/* 🎯 Icono de favoritos */
 .iconimage1 {
-  width: 60px;
+  width: 60px; /* 📏 Tamaño del contenedor del ícono */
   height: 60px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  border-radius: 50%;
-  background: var(--color-5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute; /* 📌 Posición flotante */
+  top: 30px; /* 📍 Ubicación superior */
+  right: 30px; /* 📍 Ubicación derecha */
+  border-radius: 50%; /* 🎨 Forma circular */
+  background: var(--color-5); /* 🎨 Fondo del contenedor */
+  display: flex; /* 📐 Centrado con flexbox */
+  justify-content: center; /* 🎯 Centra horizontalmente */
+  align-items: center; /* 🎯 Centra verticalmente */
 }
 
 .iconimage1 img {
-  width: 30px;
-  height: auto;
-  object-fit: cover;
-}
-.card-image img:hover {
-  filter: brightness(1.1);
-  transition: filter 0.3s ease;
+  width: 30px; /* 📏 Tamaño del ícono */
+  height: auto; /* 📏 Altura proporcional */
+  object-fit: cover; /* 📸 Ajuste perfecto sin deformación */
 }
 
 .iconimage1:hover img {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
+  transform: scale(1.1); /* 🔍 Efecto de zoom al pasar el ratón */
+  transition: transform 0.2s ease; /* ✨ Transición suave */
 }
 
+/* 📄 Contenido de la tarjeta */
 .card-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%; /* 📏 Ocupa todo el ancho disponible */
+  height: 100%; /* 📏 Ocupa toda la altura disponible */
+  display: flex; /* 📐 Activa flexbox */
+  flex-direction: column; /* ⬆ Organiza los elementos en columna */
+  justify-content: center; /* 🎯 Centra verticalmente */
+  align-items: center; /* 🎯 Centra horizontalmente */
 }
 
+/* ✨ Estilos del título */
 .card-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-family: "Space_Grotesk-Bold", sans-serif;
-  color: var(--color-5);
-  margin-bottom: 20px;
+  display: flex; /* 📐 Activa flexbox */
+  align-items: center; /* 🎯 Centra verticalmente */
+  justify-content: center; /* 🎯 Centra horizontalmente */
+  font-size: 1.5rem; /* 📏 Tamaño del título */
+  font-family: "Space_Grotesk-Bold", sans-serif; /* 🖋️ Fuente llamativa */
+  color: var(--color-5); /* 🎨 Color del texto */
+  margin-bottom: 20px; /* 🖼️ Espaciado inferior */
 }
 
+/* 🖋️ Texto de la descripción */
 .card-text {
-  font-size: 1rem;
-  font-family: "Space_Grotesk-Regular", sans-serif;
-  color: var(--color-5);
-  padding: 18px;
+  font-size: 1rem; /* 📏 Tamaño del texto */
+  font-family: "Space_Grotesk-Regular", sans-serif; /* 🖋️ Fuente secundaria */
+  color: var(--color-5); /* 🎨 Color del texto */
+  padding: 18px; /* 🖼️ Espaciado interno */
 }
 
+/* 🎨 Estilo de los botones */
 .card-button img {
-  width: 70px;
+  width: 70px; /* 📏 Tamaño de las imágenes en los botones */
 }
 
 .card-content a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--color-5);
-  font-size: 16px;
-  font-family: "Space_Grotesk-Medium", sans-serif;
+  display: flex; /* 📐 Centrado con flexbox */
+  align-items: center; /* 🎯 Centra verticalmente */
+  justify-content: center; /* 🎯 Centra horizontalmente */
+  gap: 10px; /* ✨ Espaciado entre los elementos */
+  padding: 10px; /* 🖼️ Espaciado interno */
+  border-radius: 10px; /* 🎨 Bordes redondeados */
+  text-decoration: none; /* 🚫 Elimina subrayado */
+  color: var(--color-5); /* 🎨 Color del texto */
+  font-size: 16px; /* 📏 Tamaño del texto */
+  font-family: "Space_Grotesk-Medium", sans-serif; /* 🖋️ Fuente moderna */
 }
 
 .card-content a:hover {
-  background-color: var(--color-5);
+  background-color: var(--color-5); /* 🎨 Fondo al pasar el ratón */
 }
 
 .card-content a:hover p {
-  color: var(--color-1);
+  color: var(--color-1); /* 🎨 Cambia el color del texto */
 }
 
 .card-button p {
-  font-size: 1rem;
-  font-family: "Space_Grotesk-Medium", sans-serif;
-  color: var(--color-5);
+  font-size: 1rem; /* 📏 Tamaño del texto */
+  font-family: "Space_Grotesk-Medium", sans-serif; /* 🖋️ Fuente moderna */
+  color: var(--color-5); /* 🎨 Color del texto */
 }
 
+/* 📱 Responsividad para pantallas pequeñas */
 @media screen and (max-width: 320px) {
-  
-  header {
-      height: auto; /* Eliminar el fondo de la cabecera */
-  }
-  
-  header h1 {
-      font-size: 2rem; /* Ajustar el tamaño del título */
-      margin-top: 30px;
-  }
-
-  header p {
-    width: 80%;
-    font-size: 0.8rem; /* Ajustar el tamaño de la descripción */
-    margin-top: -40px;
-    margin-bottom: 90px;
-  }
-
-  body {
-      font-size: 14px; /* Ajustar el tamaño de fuente para pantallas pequeñas */
-      line-height: 1.4; /* Mejorar la legibilidad */
-      background-color: var(--color-3); /* Cambiar el fondo de la página */
-  }
-
-  filters-component {
-    display: flex;
-    flex-direction: column;
-    margin: 140px 0 20px 460px; /* Reducir el espacio entre los filtros */
-    width: 10%; /* Ajustar el ancho del componente para que se adapte a las pantallas pequeñas */
-  }
-
   .card {
-      flex-direction: column; /* Cambiar las tarjetas a diseño vertical */
-      width: 100%; /* Que ocupen todo el ancho disponible */
-      padding: 10px; /* Reducir el padding para ajustarlo al espacio */
+      flex-direction: column; /* ⬇ Cambiar a diseño vertical */
+      width: 100%; /* 📏 Ocupa todo el ancho */
+      padding: 10px; /* 🖼️ Espaciado reducido */
   }
-
   .card-image {
-      height: 150px; /* Tamaño más pequeño para las imágenes */
+      height: 150px; /* 📏 Imágenes más pequeñas */
   }
-
   .card-title {
-      font-size: 1rem; /* Reducir el tamaño del título */
-      text-align: center; /* Centrar el texto */
+      font-size: 1rem; /* 📏 Títulos más pequeños */
+      text-align: center; /* 📄 Centrar texto */
   }
-
   .card-text {
-      font-size: 0.9rem; /* Ajustar el tamaño de la descripción */
+      font-size: 0.9rem; /* 📏 Texto ajustado */
   }
 
+    /* 🎨 Estilo del botón en las tarjetas */
   .card-button {
-      font-size: 0.8rem; /* Hacer el botón más pequeño */
-      padding: 5px 10px; /* Reducir el padding del botón */
+    font-size: 0.8rem; /* 📏 Tamaño reducido del texto para un diseño compacto */
+    padding: 5px 10px; /* ✨ Espaciado interno ajustado */
   }
+
+  /* ⭐ Contenedor del ícono de favoritos */
   .iconimage1 {
-      width: 40px; /* Reducir el tamaño del ícono */
-      height: 40px;
-      top: 15px; /* Centrar el ícono */
-      right: 15px;
+    width: 40px; /* 📏 Reducir el tamaño del contenedor del ícono */
+    height: 40px;
+    position: absolute; /* 📌 Posicionamiento flotante */
+    top: 15px; /* 📍 Ubicación superior ajustada */
+    right: 15px; /* 📍 Ubicación derecha ajustada */
+    border-radius: 50%; /* 🎨 Forma circular */
+    background: var(--color-5); /* 🎨 Fondo del ícono */
+    display: flex; /* 📐 Alineación con flexbox */
+    justify-content: center; /* 🎯 Centra horizontalmente */
+    align-items: center; /* 🎯 Centra verticalmente */
   }
 
+  /* 🎯 Estilo de la imagen del ícono */
   .iconimage1 img {
-      width: 20px; /* Reducir el tamaño del ícono */
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.2s ease;
-      transform: scale(1.2); /* Aumentar el tamaño del ícono al pasar el ratón */
-
+    width: 20px; /* 📏 Tamaño reducido del ícono */
+    height: auto; /* 📏 Altura proporcional */
+    object-fit: cover; /* 📸 Ajuste de imagen sin distorsión */
+    transition: transform 0.2s ease; /* ✨ Transición suave */
+    transform: scale(1.2); /* 🔍 Zoom ligero al pasar el ratón */
   }
+
 }
+/* 🎯 Estilos responsivos para pantallas entre 360px y 390px */
 @media screen and (min-width: 360px) and (max-width: 390px) {
-  
   header {
-      height: auto; /* Eliminar el fondo de la cabecera */
+      height: auto; /* 🖼️ Ajustar la altura dinámica del encabezado */
   }
-  
+
   header h1 {
-      font-size: 2rem; /* Ajustar el tamaño del título */
-      margin-top: 30px;
+      font-size: 2rem; /* 📏 Ajustar el tamaño del título */
+      margin-top: 30px; /* 🖼️ Espaciado superior */
   }
+
   header p {
-    width: 80%;
-    font-size: 0.8rem; /* Ajustar el tamaño de la descripción */
-    margin-top: -40px;
-    margin-bottom: 90px;
+      width: 80%; /* 📏 Reducir el ancho del párrafo */
+      font-size: 0.8rem; /* 📏 Ajustar tamaño del texto descriptivo */
+      margin-top: -40px; /* 🖼️ Ajuste de espaciado superior */
+      margin-bottom: 90px; /* 🖼️ Espaciado inferior */
   }
 
   body {
-      font-size: 16px; /* Tamaño de fuente ideal para estas pantallas */
-      line-height: 1.5; /* Espaciado cómodo para legibilidad */
-      background-color: var(--color-3); /* Cambiar el fondo de la página */
+      font-size: 16px; /* 📏 Tamaño ideal para legibilidad */
+      line-height: 1.5; /* 🎨 Espaciado cómodo entre líneas */
+      background-color: var(--color-3); /* 🎨 Fondo claro */
   }
 
   filters-component {
-    display: flex;
-    flex-direction: column;
-    margin: 140px 0 20px 460px; /* Reducir el espacio entre los filtros */
-    width: 10%; /* Ajustar el ancho del componente para que se adapte a las pantallas pequeñas */
+      display: flex; /* 📐 Activar flexbox para alineación */
+      flex-direction: column; /* ⬆ Organizar los filtros en columna */
+      margin: 140px 0 20px 460px; /* 📏 Ajustar espaciado entre filtros */
+      width: 10%; /* 📏 Ajustar el ancho para pantallas más pequeñas */
   }
 
   .card {
-      flex-direction: column; /* Mantener diseño vertical */
-      width: 95%; /* Ajustar ligeramente el ancho */
-      margin: 10px auto; /* Centrar las tarjetas */
-      padding: 15px; /* Espaciado más amplio para comodidad visual */
+      flex-direction: column; /* ⬇ Diseño vertical para las tarjetas */
+      width: 95%; /* 📏 Ajustar el ancho ligeramente */
+      margin: 10px auto; /* 🎯 Centrar las tarjetas */
+      padding: 15px; /* ✨ Espaciado cómodo para elementos internos */
   }
 
   .card-image {
-      height: 200px; /* Imagen más destacada */
-      border-radius: 10px; /* Bordes redondeados */
+      height: 200px; /* 🖼️ Tamaño más destacado para las imágenes */
+      border-radius: 10px; /* 🎨 Bordes redondeados */
   }
 
   .card-title {
-      font-size: 1.2rem; /* Tamaño del título ajustado */
-      text-align: center; /* Centrar texto */
+      font-size: 1.2rem; /* 📏 Tamaño ajustado para el título */
+      text-align: center; /* 📄 Centrar el texto */
   }
 
   .card-text {
-      font-size: 1rem; /* Ajustar tamaño de descripción */
-      line-height: 1.4; /* Mejorar la legibilidad */
+      font-size: 1rem; /* 📏 Ajustar el tamaño de descripción */
+      line-height: 1.4; /* 🎨 Mejorar el espaciado para bloques de texto */
   }
 
   .card-button {
-      font-size: 0.9rem; /* Hacer el botón ligeramente más grande */
-      padding: 10px 15px; /* Espaciado óptimo para interacción táctil */
+      font-size: 0.9rem; /* 📏 Tamaño de fuente del botón ligeramente más grande */
+      padding: 10px 15px; /* ✨ Espaciado óptimo para interacción táctil */
   }
 
   .iconimage1 {
-      width: 50px; /* Tamaño del ícono ajustado */
+      width: 50px; /* 📏 Tamaño ajustado del contenedor del ícono */
       height: 50px;
-      top: 20px; /* Centrar el ícono */
-      right: 20px;
+      top: 20px; /* 📍 Posición superior ajustada */
+      right: 20px; /* 📍 Posición derecha ajustada */
   }
 
   .iconimage1 img {
-      width: 25px; /* Tamaño del ícono ajustado */
-      height: auto;
+      width: 25px; /* 📏 Tamaño del ícono ajustado */
+      height: auto; /* 📏 Altura proporcional */
   }
 }
+/* 📱 Estilos responsivos para pantallas entre 393px y 440px */
 @media screen and (min-width: 393px) and (max-width: 440px) {
-  
   header {
-      height: auto; /* Eliminar el fondo de la cabecera */
+      height: auto; /* 🖼️ Ajustar la altura dinámica del encabezado */
   }
 
   header h1 {
-      font-size: 2.5rem; /* Ajustar el tamaño del título */
-      margin-top: 30px;
+      font-size: 2.5rem; /* 📏 Tamaño del título adecuado para pantallas medianas */
+      margin-top: 30px; /* 🖼️ Espaciado superior */
   }
+
   header p {
-    width: 80%;
-    font-size: 1rem; /* Ajustar el tamaño de la descripción */
-    margin-top: -40px;
-    margin-bottom: 120px;
+      width: 80%; /* 📏 Ajustar el ancho del párrafo */
+      font-size: 1rem; /* 📏 Ajustar el tamaño del texto descriptivo */
+      margin-top: -40px; /* 🖼️ Espaciado superior ajustado */
+      margin-bottom: 120px; /* 🖼️ Espaciado inferior ajustado */
   }
 
   body {
-      font-size: 17px; /* Aumentar ligeramente el tamaño de fuente */
-      line-height: 1.6; /* Mejorar la separación para comodidad visual */
-      background-color: var(--color-3); /* Cambiar el fondo de la página */
+      font-size: 17px; /* 📏 Tamaño de fuente ideal para mejorar la legibilidad */
+      line-height: 1.6; /* 🎨 Espaciado cómodo entre líneas */
+      background-color: var(--color-3); /* 🎨 Fondo uniforme para una experiencia visual suave */
   }
 
   filters-component {
-    display: flex;
-    flex-direction: column;
-    margin: 130px 0 20px 460px; /* Reducir el espacio entre los filtros */
-    width: 10%; /* Ajustar el ancho del componente para que se adapte a las pantallas pequeñas */
+      display: flex; /* 📐 Activar flexbox para alineación */
+      flex-direction: column; /* ⬆ Organizar los filtros en columna */
+      margin: 130px 0 20px 460px; /* 📏 Ajustar espaciado alrededor de los filtros */
+      width: 10%; /* 📏 Ajustar ancho para pantallas medianas */
   }
 
   .card-container {
-      margin-top: -50px; /* Reducir el espacio entre las tarjetas */
+      margin-top: -50px; /* 📏 Reducir el espaciado superior */
   }
 
   .card {
-      flex-direction: column; /* Mantener el diseño vertical */
-      width: 90%; /* Ajustar el ancho de las tarjetas */
-      margin: 15px auto; /* Centrar y dar espacio entre tarjetas */
-      padding: 20px; /* Espaciado más cómodo */
-      border-radius: 12px; /* Bordes redondeados para un diseño más suave */
+      flex-direction: column; /* ⬆ Mantener el diseño vertical */
+      width: 90%; /* 📏 Ajustar el ancho de las tarjetas */
+      margin: 15px auto; /* 🎯 Centrar las tarjetas con márgenes dinámicos */
+      padding: 20px; /* ✨ Espaciado interno cómodo */
+      border-radius: 12px; /* 🎨 Bordes suaves y redondeados para un diseño moderno */
   }
 
   .card-image {
-      height: 220px; /* Imagen más destacada */
-      border-radius: 8px; /* Ajustar el redondeo de la imagen */
+      height: 220px; /* 🖼️ Tamaño más destacado para las imágenes */
+      border-radius: 8px; /* 🎨 Bordes redondeados ajustados */
   }
 
   .card-title {
-      font-size: 1.4rem; /* Título ligeramente más grande */
-      text-align: center; /* Centrar el texto */
+      font-size: 1.4rem; /* 📏 Tamaño del título ideal para pantallas medianas */
+      text-align: center; /* 📄 Centrar texto para mejor legibilidad */
   }
 
   .card-text {
-      font-size: 1.1rem; /* Ajustar el tamaño de la descripción */
-      line-height: 1.5; /* Espaciado cómodo para texto largo */
+      font-size: 1.1rem; /* 📏 Tamaño ajustado para el texto descriptivo */
+      line-height: 1.5; /* 🎨 Mejorar el espaciado entre líneas para comodidad visual */
   }
 
   .card-button {
-      font-size: 1rem; /* Botón de tamaño accesible */
-      padding: 12px 18px; /* Ajustar el padding del botón */
-      border-radius: 8px; /* Bordes redondeados para interacción táctil */
+      font-size: 1rem; /* 📏 Botón con tamaño accesible */
+      padding: 12px 18px; /* ✨ Espaciado cómodo para interacción táctil */
+      border-radius: 8px; /* 🎨 Bordes suaves para una experiencia amigable al tacto */
   }
 
   .iconimage1 img {
-      width: 28px; /* Ajustar el tamaño del ícono */
-      height: auto;
+      width: 28px; /* 📏 Ajustar el tamaño del ícono */
+      height: auto; /* 📏 Altura proporcional */
   }
 
   .iconimage1 {
-      width: 50px; /* Ajustar el tamaño del ícono */
+      width: 50px; /* 📏 Ajustar el tamaño del contenedor del ícono */
       height: 50px;
-      top: 15px; /* Centrar el ícono */
-      right: 15px;
+      top: 15px; /* 📍 Ajustar la posición superior */
+      right: 15px; /* 📍 Ajustar la posición derecha */
   }
 }
+/* 📱 Estilos responsivos para pantallas entre 768px y 1114px */
 @media screen and (min-width: 768px) and (max-width: 1114px) {
-  
   header {
-      height: auto; /* Eliminar el fondo de la cabecera */
+      height: auto; /* 🖼️ Ajustar la altura dinámica del encabezado */
   }
+
   header h1 {
-      font-size: 3rem; /* Ajustar el tamaño del título */
-      margin-top: 50px;
+      font-size: 3rem; /* 📏 Tamaño más grande para el título */
+      margin-top: 50px; /* 🖼️ Espaciado superior para dar aire al diseño */
   }
 
   body {
-      font-size: 18px; /* Aumentar el tamaño de fuente */
-      background: var(--color-3); /* Cambiar el fondo de la página */
-      line-height: 1.7; /* Mejorar la separación para comodidad visual */
+      font-size: 18px; /* 📏 Tamaño de fuente ideal para una legibilidad óptima */
+      background: var(--color-3); /* 🎨 Cambiar el color de fondo */
+      line-height: 1.7; /* 🎨 Mejorar la separación entre líneas */
   }
+
   filters-component {
-      margin: 130px 0 20px 120px; /* Reducir el espacio entre los filtros */
+      margin: 130px 0 20px 120px; /* 📏 Ajustar el espaciado del componente de filtros */
   }
 
   .card-container {
-      margin-top: -50px; /* Reducir el espacio entre las tarjetas */
+      margin-top: -50px; /* 📏 Reducir el espaciado superior entre tarjetas */
   }
 
   .card {
-      flex-direction: column; /* Mantener el diseño vertical */
-      width: 90%; /* Ajustar el ancho de las tarjetas */
-      margin: 15px auto; /* Centrar y dar espacio entre tarjetas */
-      padding: 20px; /* Espaciado más cómodo */
-      border-radius: 12px; /* Bordes redondeados para un diseño más suave */
+      flex-direction: column; /* ⬇ Mantener diseño vertical */
+      width: 90%; /* 📏 Ajustar ligeramente el ancho de las tarjetas */
+      margin: 15px auto; /* 🎯 Centrar las tarjetas con márgenes dinámicos */
+      padding: 20px; /* ✨ Añadir espaciado cómodo dentro de las tarjetas */
+      border-radius: 12px; /* 🎨 Bordes redondeados para suavizar el diseño */
   }
+
   .iconimage1 {
-      width: 60px; /* Ajustar el tamaño del ícono */
+      width: 60px; /* 📏 Ajustar el tamaño del contenedor del ícono */
       height: 60px;
-      top: 20px; /* Centrar el ícono */
-      right: 20px;
+      top: 20px; /* 📍 Posición superior ajustada */
+      right: 20px; /* 📍 Posición derecha ajustada */
   }
 }
-
