@@ -32,18 +32,16 @@ async function updateCards(category) {
     console.log(`🔄 Actualizando tarjetas para la categoría: ${category}`);
 
     try {
-        // Obtener los datos de noticias
         const response = await fetchNews(category);
-        const articles = response.articles; // 📰 Extraer los artículos de la respuesta
+        const articles = response?.articles; // 📰 Extraer los artículos de la respuesta
 
         if (!articles || articles.length === 0) {
             console.error("❌ No se encontraron noticias para esta categoría.");
             return;
         }
 
-        // Seleccionar las tarjetas existentes
         const cardsContainer = document.querySelector(".card-container");
-        cardsContainer.innerHTML = ""; // Limpiar el contenedor SOLO para esta categoría
+        cardsContainer.innerHTML = ""; // Limpiar el contenedor antes de agregar tarjetas
 
         articles.slice(0, 5).forEach((article) => {
             const card = createCard(article);
@@ -58,33 +56,37 @@ async function updateCards(category) {
 
 // 🔧 Función para crear una tarjeta
 function createCard(article) {
+    const title = article.title || "Título no disponible";
+    const description = article.description || "Descripción no disponible.";
+    const url = article.url || "#";
+    const image = article.urlToImage || "./assets/images/placeholder.jpg";
+
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
         <div class="card-image">
-            <a href="${article.url}" target="_blank">
-                <img src="${article.urlToImage || './assets/images/placeholder.jpg'}" alt="${article.title}">
+            <a href="${url}" target="_blank">
+                <img src="${image}" alt="${title}">
             </a>
             <div class="iconimage1">
                 <img src="./assets/icons/emptyFavoriteIcon.svg" alt="Favoritos vacíos">
             </div>
         </div>
         <div class="card-content">
-            <h3 class="card-title">${article.title}</h3>
-            <p class="card-text">${article.description || 'Descripción no disponible.'}</p>
-            <a href="${article.url}" class="card-button" target="_blank">
+            <h3 class="card-title">${title}</h3>
+            <p class="card-text">${description}</p>
+            <a href="${url}" class="card-button" target="_blank">
+                <img src="./assets/icons/camperNew.svg" alt="Camper New logo">
                 <p>Leer más ...</p>
             </a>
         </div>
     `;
 
-    // Verificar si el artículo ya está en favoritos y actualizar el ícono
-    const isFavorite = favoriteCards.some((fav) => fav.article.title === article.title);
+    const isFavorite = favoriteCards.some((fav) => fav.title === title);
     const favoriteIcon = card.querySelector(".iconimage1 img");
     favoriteIcon.src = isFavorite ? "./assets/icons/fillFavoriteIcon.svg" : "./assets/icons/emptyFavoriteIcon.svg";
 
-    // 📌 Agregar evento de favoritos
-    favoriteIcon.addEventListener("click", () => toggleFavorite(card, article, favoriteIcon));
+    favoriteIcon.addEventListener("click", () => toggleFavorite(card, { title, description, url, image }, favoriteIcon));
 
     return card;
 }
@@ -92,34 +94,37 @@ function createCard(article) {
 // ⭐ Función para alternar el estado de favoritos
 function toggleFavorite(card, article, icon) {
     if (icon.src.includes("emptyFavoriteIcon.svg")) {
-        icon.src = "./assets/icons/fillFavoriteIcon.svg"; // Cambiar a ícono lleno
-        favoriteCards.push({ card, article }); // Guardar la tarjeta en favoritos
+        icon.src = "./assets/icons/fillFavoriteIcon.svg";
+        favoriteCards.push(article); // Guardar el artículo en favoritos
         console.log("✅ Artículo marcado como favorito:", article.title);
     } else {
-        icon.src = "./assets/icons/emptyFavoriteIcon.svg"; // Cambiar a ícono vacío
-        favoriteCards = favoriteCards.filter((fav) => fav.article.title !== article.title); // Remover de favoritos
+        icon.src = "./assets/icons/emptyFavoriteIcon.svg";
+        favoriteCards = favoriteCards.filter((fav) => fav.title !== article.title); // Remover de favoritos
         console.log("❌ Artículo eliminado de favoritos:", article.title);
+
+        const currentCategory = document.querySelector(".filters .active")?.getAttribute("data-category");
+        if (currentCategory === "favorites") {
+            showFavoriteCards(); // Actualizar favoritos inmediatamente
+        }
     }
 
-    // Guardar el estado actualizado en localStorage
-    localStorage.setItem("favoriteCards", JSON.stringify(favoriteCards));
-
-    // Actualizar dinámicamente la vista de favoritos si estamos en ese filtro
-    const currentCategory = document.querySelector(".filters .active")?.getAttribute("data-category");
-    if (currentCategory === "favorites") {
-        showFavoriteCards();
-    }
+    localStorage.setItem("favoriteCards", JSON.stringify(favoriteCards)); // Guardar en localStorage
 }
 
 // 🛠️ Mostrar solo las tarjetas favoritas
 function showFavoriteCards() {
     console.log("✨ Mostrando solo las tarjetas favoritas...");
     const cardsContainer = document.querySelector(".card-container");
-    cardsContainer.innerHTML = ""; // Limpiar solo la vista de favoritos
+    cardsContainer.innerHTML = "";
 
-    favoriteCards.forEach(({ article }) => {
-        const clonedCard = createCard(article); // Crear tarjeta clonada
-        cardsContainer.appendChild(clonedCard); // Agregar tarjeta clonada al contenedor
+    favoriteCards.forEach((fav) => {
+        const card = createCard({
+            title: fav.title,
+            description: fav.description,
+            url: fav.url,
+            urlToImage: fav.image || "./assets/images/placeholder.jpg", // Asegurar imagen predeterminada
+        });
+        cardsContainer.appendChild(card);
     });
 }
 
@@ -129,13 +134,13 @@ document.addEventListener("campus:category-change", (event) => {
     console.log("🚀 Evento capturado, categoría seleccionada:", category);
 
     if (category === "favorites") {
-        showFavoriteCards(); // Mostrar solo las favoritas
+        showFavoriteCards();
     } else {
-        updateCards(category); // Actualizar tarjetas según la categoría seleccionada
+        updateCards(category);
     }
 });
 
 // 🛠️ Actualizar las tarjetas al cargar la página con el filtro "all"
 document.addEventListener("DOMContentLoaded", () => {
-    updateCards("all"); // Inicializar con "All News"
+    updateCards("all");
 });
