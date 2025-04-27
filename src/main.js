@@ -94,22 +94,22 @@ function createCard(article) {
 // ⭐ Función para alternar el estado de favoritos
 function toggleFavorite(card, article, icon) {
     if (icon.src.includes("emptyFavoriteIcon.svg")) {
+        // Añadir a favoritos
         icon.src = "./assets/icons/fillFavoriteIcon.svg";
         favoriteCards.push(article); // Guardar el artículo en favoritos
         console.log("✅ Artículo marcado como favorito:", article.title);
     } else {
+        // Eliminar de favoritos
         icon.src = "./assets/icons/emptyFavoriteIcon.svg";
         favoriteCards = favoriteCards.filter((fav) => fav.title !== article.title); // Remover de favoritos
         console.log("❌ Artículo eliminado de favoritos:", article.title);
 
-        // Actualizar la vista de favoritos de inmediato
-        const currentCategory = document.querySelector(".filters .active")?.getAttribute("data-category");
-        if (currentCategory === "favorites") {
-            showFavoriteCards();
-        }
+        // Eliminar la tarjeta del DOM
+        card.remove();
     }
 
-    localStorage.setItem("favoriteCards", JSON.stringify(favoriteCards)); // Guardar en localStorage
+    // Guardar el estado actualizado en localStorage
+    localStorage.setItem("favoriteCards", JSON.stringify(favoriteCards));
 }
 
 // 🛠️ Mostrar solo las tarjetas favoritas
