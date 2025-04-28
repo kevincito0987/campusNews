@@ -1,7 +1,7 @@
 console.log("Funcion main"); // 🎯 Verifica el inicio del proceso principal
 
 // 📰 Claves y URL para la API de NewsAPI
-const API_KEY = "c3f93ce5881b4336a18ae0b9dfd80d55"; // 🔑 Clave de la API
+const API_KEY = "94391a6841094cbb9fd78fe78bfe1714"; // 🔑 Clave de la API
 const BASE_URL = "https://newsapi.org/v2/everything"; // 🌐 URL base de la API
 
 // 🔒 Inicialización de lista para favoritos
