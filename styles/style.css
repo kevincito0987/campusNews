@@ -20,7 +20,7 @@ header {
     background-position: center center; /* 📌 Posiciona al centro */
     background-repeat: no-repeat; /* 🚫 Evita que se repita */
     background-size: cover; /* 🎨 Ajusta para cubrir el contenedor */
-    animation: backgroundChange 540s infinite; /* 🎞️ Cambia el fondo cada 3 minutos */
+    animation: backgroundChange 20s infinite; /* 🎞️ Animación para el cambio de fondo */
 }
 
 /* 🎞️ Animación para el cambio de fondo */
