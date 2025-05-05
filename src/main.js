@@ -1,28 +1,21 @@
 console.log("Funcion main"); // 🎯 Verifica el inicio del proceso principal
 
-// 📰 Claves y URL para la API de NewsAPI
-const API_KEY = "94391a6841094cbb9fd78fe78bfe1714"; // 🔑 Clave de la API de NewsAPI
-const BASE_URL = "https://newsapi.org/v2/everything"; // 🌐 URL base de la API
+// 📰 URL de tu API en Railway
+const BASE_URL = "https://campusnews-production.up.railway.app/api/news";
 
-// 🔒 Inicialización de lista para favoritos
-let favoriteCards = JSON.parse(localStorage.getItem("favoriteCards")) || []; // ⚡ Recuperar favoritos desde localStorage
+// 🔒 Inicialización de lista para favoritos desde localStorage
+let favoriteCards = JSON.parse(localStorage.getItem("favoriteCards")) || []; // ⚡ Recuperar favoritos
 
-// 🔄 Función genérica para obtener noticias según categoría
-async function fetchNews(query) {
-    const url = `${BASE_URL}?q=${query}&apiKey=${API_KEY}`; // 🌐 Construir la URL con parámetros
-
+// 🔄 Función para obtener noticias directamente desde tu API en Railway
+async function fetchNews() {
     try {
-        const response = await fetch(url); // 🔄 Realizar solicitud a la API
-        const data = await response.json(); // 📜 Parsear respuesta como JSON
+        const response = await fetch(BASE_URL); // 🌐 Solicitud GET a tu API
+        if (!response.ok) throw new Error(`Error ${response.status}: ${response.statusText}`);
 
-        if (data.status === "ok") {
-            return data; // 📰 Retornar artículos si la solicitud es exitosa
-        } else {
-            console.error("⚠️ Error en la API:", data.message); // ⚠️ Mostrar error en la consola
-            return null;
-        }
+        const data = await response.json(); // 📜 Parsear la respuesta como JSON
+        return data; // 📰 Retornar datos obtenidos desde MongoDB
     } catch (error) {
-        console.error("❌ Error al obtener las noticias:", error); // ❌ Capturar errores de solicitud
+        console.error("❌ Error al obtener las noticias:", error.message); // ❌ Capturar errores
         return null;
     }
 }
