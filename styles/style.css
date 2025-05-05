@@ -288,6 +288,28 @@ main::before {
     transition: transform 0.2s ease; /* ✨ Transición suave */
     transform: scale(1.2); /* 🔍 Zoom ligero al pasar el ratón */
   }
+  header h1 {
+      font-size: 1.5rem; /* 📏 Ajustar el tamaño del título */
+      margin-top: 30px; /* 🖼️ Espaciado superior */
+  }
+
+  header p {
+      width: 80%; /* 📏 Reducir el ancho del párrafo */
+      font-size: 0.8rem; /* 📏 Ajustar tamaño del texto descriptivo */
+      margin-top: -40px; /* 🖼️ Ajuste de espaciado superior */
+      margin-bottom: 90px; /* 🖼️ Espaciado inferior */
+  }
+  filters-component {
+      display: flex; /* 📐 Activar flexbox para alineación */
+      flex-direction: column; /* ⬆ Organizar los filtros en columna */
+      margin: 130px 0 20px 420px; /* 📏 Ajustar espaciado alrededor de los filtros */
+      width: 10%; /* 📏 Ajustar ancho para pantallas medianas */
+  }
+  body {
+      font-size: 16px; /* 📏 Tamaño ideal para legibilidad */
+      line-height: 1.6; /* 🎨 Espaciado cómodo entre líneas */
+      background-color: var(--color-3); /* 🎨 Fondo uniforme para una experiencia visual suave */
+  }
 
 }
 /* 🎯 Estilos responsivos para pantallas entre 360px y 390px */
@@ -446,6 +468,12 @@ main::before {
       font-size: 3rem; /* 📏 Tamaño más grande para el título */
       margin-top: 50px; /* 🖼️ Espaciado superior para dar aire al diseño */
   }
+  header p {
+      width: 80%; /* 📏 Ajustar el ancho del párrafo */
+      font-size: 1.1rem; /* 📏 Ajustar el tamaño del texto descriptivo */
+      margin-top: -40px; /* 🖼️ Espaciado superior ajustado */
+      margin-bottom: 120px; /* 🖼️ Espaciado inferior ajustado */
+  }
 
   body {
       font-size: 18px; /* 📏 Tamaño de fuente ideal para una legibilidad óptima */
@@ -454,7 +482,7 @@ main::before {
   }
 
   filters-component {
-      margin: 130px 0 20px 120px; /* 📏 Ajustar el espaciado del componente de filtros */
+    margin: 130px 0 20px 80px;
   }
 
   .card-container {
@@ -475,4 +503,58 @@ main::before {
       top: 20px; /* 📍 Posición superior ajustada */
       right: 20px; /* 📍 Posición derecha ajustada */
   }
+}
+@media screen and (max-width: 162px) {
+    /* Estilos específicos para smartwatch */
+    header h1 {
+        font-size: 1rem; /* Tamaño de fuente adecuado para pantallas pequeñas */
+        margin-top: 30px;
+    }
+    header p {
+        font-size: 0.8rem; /* Tamaño de fuente adecuado para pantallas pequeñas */
+        margin-top: -40px;
+        margin-bottom: 90px;
+    }
+    header {
+        height: auto;
+    }
+
+    filters-component {
+        margin: 130px 0 20px 0px;
+    }
+    .card-container {
+        margin-top: -50px;
+    }
+    .card {
+        flex-direction: column;
+        width: 100%;
+        margin: 15px auto;
+        padding: 20px;
+        border-radius: 12px;
+    }
+    card-image {
+        height: 150px;
+    }
+    .card-title {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .card-text {
+        font-size: 0.6rem;
+    }
+    .card-button {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    .iconimage1 {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+    }
+    .card-content a {
+        font-size: 0.8rem; /* Tamaño de fuente adecuado para pantallas pequeñas */
+        display: flex;
+        flex-direction: column;
+    }
 }

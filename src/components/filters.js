@@ -52,6 +52,33 @@ class FiltersComponent extends HTMLElement {
             .filters a img:hover {
                 transform: scale(1.1); /* 🔍 Efecto de zoom al pasar el ratón */
             }
+            @media screen and (max-width: 162px) {
+                a {
+                    font-size: 0.7rem; /* 📏 Ajustar el tamaño del texto para pantallas pequeñas */
+                    display: flex; /* 📐 Activar flexbox */
+                    flex-direction: column; /* ➡️ Organizar contenido en fila */
+                    align-items: center; /* 🎯 Centrar verticalmente */
+                    justify-content: center; /* 🎯 Centrar horizontalmente */
+                    gap: 10px; /* ✨ Espaciado interno entre ícono y texto */
+                    padding: 10px; /* ✨ Espaciado interno cómodo */
+                }
+                a img {
+                    width: 50px; /* 📏 Ajustar el tamaño de los íconos para pantallas pequeñas */
+                }
+                .filters {
+                    height: auto; /* 📏 Ajustar la altura dinámica para pantallas pequeñas */
+                    width: 100%; /* 📏 Ajustar el ancho para pantallas pequeñas */
+                    display: flex; /* 📐 Activar flexbox */
+                    flex-direction: column; /* ➡️ Organizar los filtros en fila */
+                    align-items: center; /* 🎯 Centrar los filtros verticalmente */
+                    justify-content: center; /* 🎯 Centrar los filtros horizontalmente */
+                    gap: 20px; /* ✨ Espaciado entre filtros */
+                    margin-top: 50px; /* 🖼️ Espaciado superior */
+                    margin-bottom: 40px; /* 🖼️ Espaciado inferior */
+                    padding: 30px; /* ✨ Espaciado interno */
+                    margin-left: -28px;
+                }
+            }
         `;
 
         // 🖼️ Contenedor principal para los filtros
