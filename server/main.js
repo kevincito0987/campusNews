@@ -1,5 +1,7 @@
 console.log("Funcion main"); // 🎯 Verifica el inicio del proceso principal
 const mongoose = require("mongoose");
+const News = require("./models/newsModel");
+const { connectDB } = require("./data/mongoDb");
 // 📰 Claves y URL para la API de NewsAPI
 const API_KEY = "94391a6841094cbb9fd78fe78bfe1714"; // 🔑 Clave de la API de NewsAPI
 const BASE_URL = "https://newsapi.org/v2/everything"; // 🌐 URL base de la API
@@ -23,7 +25,7 @@ async function fetchNews(query) {
         return null;
     }
 }
-
+connectDB();
 
 async function saveNewsToDB(query) {
     const newsData = await fetchNews(query);
