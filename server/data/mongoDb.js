@@ -1,6 +1,4 @@
-console.log("Funcion mongoDb"); // 🎯 Verifica el inicio del proceso principal
-
-require("dotenv").config({ path: "./server/.env" }); // 📌 Ajusta la ruta si es necesario
+require("dotenv").config(); // 📌 Ajusta la ruta si es necesario
 
 const mongoose = require("mongoose");
 
