@@ -6,28 +6,50 @@ const BASE_URL = "https://campusnews-production.up.railway.app/api/news";
 // 🔒 Inicialización de lista para favoritos desde localStorage
 let favoriteCards = JSON.parse(localStorage.getItem("favoriteCards")) || []; // ⚡ Recuperar favoritos
 
-// 🔄 Función para obtener noticias directamente desde tu API en Railway
-async function fetchNews() {
+// 🔄 Función para obtener y filtrar noticias según la categoría
+async function fetchFilteredNews(category) {
     try {
-        const response = await fetch(BASE_URL); // 🌐 Solicitud GET a tu API
+        const response = await fetch(BASE_URL); // 🌐 Obtener todas las noticias desde la API
         if (!response.ok) throw new Error(`Error ${response.status}: ${response.statusText}`);
 
-        const data = await response.json(); // 📜 Parsear la respuesta como JSON
-        return data; // 📰 Retornar datos obtenidos desde MongoDB
+        const data = await response.json(); // 📜 Convertir respuesta a JSON
+        if (!Array.isArray(data) || data.length === 0) {
+            console.error("❌ No hay noticias disponibles.");
+            return [];
+        }
+
+        // 🏆 Filtrado por categoría
+        const filteredNews = data.filter(article => {
+            const text = `${article.title} ${article.description} ${article.content}`.toLowerCase();
+            
+            switch (category) {
+                case "school":
+                    return text.includes("school") || text.includes("education") || text.includes("students") || text.includes("university");
+                case "technology":
+                    return text.includes("technology") || text.includes("tech") || text.includes("AI") || text.includes("software") || text.includes("gadgets");
+                case "corporate":
+                    return text.includes("corporate") || text.includes("business") || text.includes("company") || text.includes("startup") || text.includes("finance");
+                case "all":
+                default:
+                    return true; // 🔄 Trae todas las noticias recientes
+            }
+        });
+
+        return filteredNews;
     } catch (error) {
-        console.error("❌ Error al obtener las noticias:", error.message); // ❌ Capturar errores
+        console.error("❌ Error al obtener y filtrar las noticias:", error.message);
         return [];
     }
 }
 
-// 🔄 Función para actualizar las tarjetas en la interfaz
-async function updateCards() {
-    console.log("🔄 Actualizando tarjetas...");
+// 🔄 Función para actualizar las tarjetas en la interfaz según la categoría
+async function updateCards(category = "all") {
+    console.log(`🔄 Actualizando tarjetas para la categoría: ${category}`);
 
     try {
-        const articles = await fetchNews(); // ✅ Obtener noticias directamente
+        const articles = await fetchFilteredNews(category); // ✅ Aplicar filtro
         if (articles.length === 0) {
-            console.error("❌ No se encontraron noticias.");
+            console.error("❌ No se encontraron noticias para esta categoría.");
             return;
         }
 
@@ -116,7 +138,19 @@ function showFavoriteCards() {
     });
 }
 
+// 🎯 Escuchar cambios de categoría
+document.addEventListener("campus:category-change", (event) => {
+    const category = event.detail.category;
+    console.log("🚀 Evento capturado: categoría seleccionada:", category);
+
+    if (category === "favorites") {
+        showFavoriteCards(); // ⭐ Mostrar favoritos
+    } else {
+        updateCards(category); // 🔄 Actualizar tarjetas según la categoría
+    }
+});
+
 // 🛠️ Cargar tarjetas iniciales al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-    updateCards();
+    updateCards("all"); // 🚀 Inicializar con "All News"
 });
