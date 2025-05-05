@@ -1,5 +1,5 @@
 console.log("Funcion main"); // 🎯 Verifica el inicio del proceso principal
-
+const mongoose = require("mongoose");
 // 📰 Claves y URL para la API de NewsAPI
 const API_KEY = "94391a6841094cbb9fd78fe78bfe1714"; // 🔑 Clave de la API de NewsAPI
 const BASE_URL = "https://newsapi.org/v2/everything"; // 🌐 URL base de la API
@@ -24,6 +24,37 @@ async function fetchNews(query) {
     }
 }
 
-fetchNews("all").then((response) => {
-    console.log(response);
-});
+
+async function saveNewsToDB(query) {
+    const newsData = await fetchNews(query);
+    
+    if (!newsData || !newsData.articles) {
+        console.log("⚠️ No se encontraron artículos para guardar.");
+        return;
+    }
+
+    try {
+        const formattedArticles = newsData.articles.map(article => ({
+            source: {
+                id: article.source?.id || "Sin ID",
+                name: article.source?.name || "Sin Nombre",
+            },
+            author: article.author || "Desconocido",
+            title: article.title,
+            description: article.description,
+            url: article.url,
+            urlToImage: article.urlToImage || "Sin Imagen",
+            publishedAt: article.publishedAt,
+            content: article.content || "Sin contenido",
+        }));
+
+        await News.insertMany(formattedArticles);
+        console.log("✅ Noticias guardadas en la base de datos.");
+
+    } catch (error) {
+        console.error("❌ Error al guardar noticias:", error);
+    }
+}
+
+// 🔥 Llamar a la función para probar
+saveNewsToDB("all");
