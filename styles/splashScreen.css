@@ -177,3 +177,45 @@ a:hover p {
         height: auto; /* 📏 Mantiene la proporción de la imagen */
     }
 }
+@media screen and (max-width: 162px) {
+    /* Estilos específicos para smartwatch */
+    .content h1 {
+        font-size: 1rem; /* Tamaño de fuente adecuado para pantallas pequeñas */
+        margin-top: -360px;
+    }
+    .content p {
+        font-size: 0.9rem; /* Tamaño de fuente adecuado para pantallas pequeñas */
+        margin-top: -40px;
+        margin-bottom: 90px;
+        text-align: center;
+    }
+    body {
+        height: auto;
+    }
+
+    .content a {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 50px;
+        border-radius: 10px; /* 🎯 Bordes redondeados */
+        text-decoration: none;
+        color: var(--color-5);
+        font-size: 0.9rem;
+        font-family: "Space_Grotesk-Medium", sans-serif;
+        margin-bottom: 20px;
+        width: 80%;
+        height: 200px;
+    }
+    .content a img {
+        width: 70px;
+        margin-top: 90px;
+    }
+    .content a:hover {
+        background-color: var(--color-5);
+    }
+    .content a:hover p {
+        color: var(--color-1);
+    }
+    
+}
