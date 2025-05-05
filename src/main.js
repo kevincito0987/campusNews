@@ -27,7 +27,9 @@ async function fetchFilteredNews(category) {
                     return text.includes("school") || text.includes("education") || text.includes("students") || 
                            text.includes("university") || text.includes("academic") || text.includes("research project") || 
                            text.includes("faculty") || text.includes("scholarship") || text.includes("campus") ||
-                           text.includes("extracurricular") || text.includes("college sports") || text.includes("student project");
+                           text.includes("extracurricular") || text.includes("college sports") || text.includes("student") ||
+                           text.includes("learning") || text.includes("professor") || text.includes("class") || 
+                           text.includes("teacher") || text.includes("degree") || text.includes("exam");
                 case "technology":
                     return text.includes("technology") || text.includes("tech") || text.includes("AI") || 
                            text.includes("software") || text.includes("gadgets");
