@@ -29,7 +29,11 @@ async function fetchFilteredNews(category) {
                            text.includes("faculty") || text.includes("scholarship") || text.includes("campus") ||
                            text.includes("extracurricular") || text.includes("college sports") || text.includes("student") ||
                            text.includes("learning") || text.includes("professor") || text.includes("class") || 
-                           text.includes("teacher") || text.includes("degree") || text.includes("exam");
+                           text.includes("teacher") || text.includes("degree") || text.includes("exam") ||
+                           text.includes("academy") || text.includes("scholars") || text.includes("internship") ||
+                           text.includes("lecture") || text.includes("graduate") || text.includes("curriculum") ||
+                           text.includes("tuition") || text.includes("faculty") || text.includes("high school") || 
+                           text.includes("elementary") || text.includes("mentorship");
                 case "technology":
                     return text.includes("technology") || text.includes("tech") || text.includes("AI") || 
                            text.includes("software") || text.includes("gadgets");
@@ -63,12 +67,12 @@ async function updateCards(category = "all") {
         const cardsContainer = document.querySelector(".card-container");
         cardsContainer.innerHTML = ""; // 🚿 Limpiar el contenedor antes de insertar tarjetas
 
-        articles.slice(0, 5).forEach((article) => {
+        articles.forEach((article) => { // 💡 Ahora no limitamos a 5 noticias
             const card = createCard(article); // 🃏 Crear tarjeta para cada artículo
             cardsContainer.appendChild(card); // 🖼️ Agregar tarjeta al contenedor
         });
 
-        console.log("✅ Tarjetas actualizadas correctamente.");
+        console.log(`✅ Se actualizaron ${articles.length} tarjetas correctamente.`);
     } catch (error) {
         console.error("❌ Error al actualizar las tarjetas:", error);
     }
