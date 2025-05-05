@@ -16,20 +16,18 @@ async function fetchNews() {
         return data; // 📰 Retornar datos obtenidos desde MongoDB
     } catch (error) {
         console.error("❌ Error al obtener las noticias:", error.message); // ❌ Capturar errores
-        return null;
+        return [];
     }
 }
 
 // 🔄 Función para actualizar las tarjetas en la interfaz
-async function updateCards(category) {
-    console.log(`🔄 Actualizando tarjetas para la categoría: ${category}`);
+async function updateCards() {
+    console.log("🔄 Actualizando tarjetas...");
 
     try {
-        const response = await fetchNews(category);
-        const articles = response?.articles; // 📰 Extraer artículos de la respuesta
-
-        if (!articles || articles.length === 0) {
-            console.error("❌ No se encontraron noticias para esta categoría.");
+        const articles = await fetchNews(); // ✅ Obtener noticias directamente
+        if (articles.length === 0) {
+            console.error("❌ No se encontraron noticias.");
             return;
         }
 
@@ -49,16 +47,14 @@ async function updateCards(category) {
 
 // 🔧 Función para construir las tarjetas de noticias
 function createCard(article) {
-    // 📋 Asignar valores predeterminados si faltan datos
     const title = article.title || "Título no disponible";
     const description = article.description || "Descripción no disponible.";
     const url = article.url || "#";
     const image = article.urlToImage || "./assets/images/placeholder.jpg";
 
     const card = document.createElement("div");
-    card.classList.add("card"); // 🃏 Asignar clase de estilo
+    card.classList.add("card");
 
-    // 🔗 Estructura HTML de la tarjeta
     card.innerHTML = `
         <div class="card-image">
             <a href="${url}" target="_blank">
@@ -82,27 +78,24 @@ function createCard(article) {
     const favoriteIcon = card.querySelector(".iconimage1 img");
     favoriteIcon.src = isFavorite ? "./assets/icons/fillFavoriteIcon.svg" : "./assets/icons/emptyFavoriteIcon.svg";
 
-    // ⭐ Agregar evento para alternar estado de favoritos
     favoriteIcon.addEventListener("click", () => toggleFavorite(card, { title, description, url, image }, favoriteIcon));
 
-    return card; // 🖼️ Retornar la tarjeta construida
+    return card;
 }
 
 // ⭐ Función para alternar el estado de favoritos
 function toggleFavorite(card, article, icon) {
     if (icon.src.includes("emptyFavoriteIcon.svg")) {
-        icon.src = "./assets/icons/fillFavoriteIcon.svg"; // 🟡 Cambiar a favorito lleno
-        favoriteCards.push(article); // 📋 Agregar a favoritos
+        icon.src = "./assets/icons/fillFavoriteIcon.svg";
+        favoriteCards.push(article);
         console.log("✅ Artículo marcado como favorito:", article.title);
     } else {
-        icon.src = "./assets/icons/emptyFavoriteIcon.svg"; // ⚪ Cambiar a favorito vacío
-        favoriteCards = favoriteCards.filter((fav) => fav.title !== article.title); // 🗑️ Remover de favoritos
+        icon.src = "./assets/icons/emptyFavoriteIcon.svg";
+        favoriteCards = favoriteCards.filter((fav) => fav.title !== article.title);
         console.log("❌ Artículo eliminado de favoritos:", article.title);
-
-        card.remove(); // 🚿 Eliminar tarjeta del DOM
+        card.remove();
     }
 
-    // 💾 Actualizar favoritos en localStorage
     localStorage.setItem("favoriteCards", JSON.stringify(favoriteCards));
 }
 
@@ -110,32 +103,20 @@ function toggleFavorite(card, article, icon) {
 function showFavoriteCards() {
     console.log("✨ Mostrando solo las tarjetas favoritas...");
     const cardsContainer = document.querySelector(".card-container");
-    cardsContainer.innerHTML = ""; // 🚿 Limpiar el contenedor
+    cardsContainer.innerHTML = "";
 
     favoriteCards.forEach((fav) => {
         const card = createCard({
             title: fav.title,
             description: fav.description,
             url: fav.url,
-            urlToImage: fav.image || "./assets/images/placeholder.jpg", // 📸 Usar imagen predeterminada si falta
+            urlToImage: fav.image || "./assets/images/placeholder.jpg",
         });
-        cardsContainer.appendChild(card); // 🖼️ Agregar tarjetas al contenedor
+        cardsContainer.appendChild(card);
     });
 }
 
-// 🎯 Escuchar cambios de categoría
-document.addEventListener("campus:category-change", (event) => {
-    const category = event.detail.category;
-    console.log("🚀 Evento capturado: categoría seleccionada:", category);
-
-    if (category === "favorites") {
-        showFavoriteCards(); // ⭐ Mostrar favoritos
-    } else {
-        updateCards(category); // 🔄 Actualizar tarjetas según la categoría
-    }
-});
-
 // 🛠️ Cargar tarjetas iniciales al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-    updateCards("all"); // 🚀 Inicializar con "All News"
+    updateCards();
 });
