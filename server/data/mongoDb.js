@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "./.env" }); // 📌 Asegura la ruta al archivo .env
+require("dotenv").config({ path: "./server/.env" }); // 📌 Ajusta la ruta si es necesario
 console.log("🔗 Verificando MONGO_URI:", process.env.MONGO_URI || "❌ No se encontró MONGO_URI");
 
 const mongoose = require("mongoose");
