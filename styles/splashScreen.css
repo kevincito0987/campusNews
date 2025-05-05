@@ -192,6 +192,9 @@ a:hover p {
     body {
         height: auto;
     }
+    .content > img {
+        width: 280px;
+    }
 
     .content a {
         display: flex;
