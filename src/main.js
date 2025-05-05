@@ -24,11 +24,16 @@ async function fetchFilteredNews(category) {
             
             switch (category) {
                 case "school":
-                    return text.includes("school") || text.includes("education") || text.includes("students") || text.includes("university");
+                    return text.includes("school") || text.includes("education") || text.includes("students") || 
+                           text.includes("university") || text.includes("academic") || text.includes("research project") || 
+                           text.includes("faculty") || text.includes("scholarship") || text.includes("campus") ||
+                           text.includes("extracurricular") || text.includes("college sports") || text.includes("student project");
                 case "technology":
-                    return text.includes("technology") || text.includes("tech") || text.includes("AI") || text.includes("software") || text.includes("gadgets");
+                    return text.includes("technology") || text.includes("tech") || text.includes("AI") || 
+                           text.includes("software") || text.includes("gadgets");
                 case "corporate":
-                    return text.includes("corporate") || text.includes("business") || text.includes("company") || text.includes("startup") || text.includes("finance");
+                    return text.includes("corporate") || text.includes("business") || text.includes("company") || 
+                           text.includes("startup") || text.includes("finance");
                 case "all":
                 default:
                     return true; // 🔄 Trae todas las noticias recientes
