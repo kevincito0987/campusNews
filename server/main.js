@@ -48,6 +48,7 @@ async function saveNewsToDB(query) {
             urlToImage: article.urlToImage || "Sin Imagen",
             publishedAt: article.publishedAt,
             content: article.content || "Sin contenido",
+            category: query.category || "Sin categoría"
         }));
 
         await News.insertMany(formattedArticles);
@@ -59,4 +60,7 @@ async function saveNewsToDB(query) {
 }
 
 // 🔥 Llamar a la función para probar
+saveNewsToDB("school");
+saveNewsToDB("technology");
 saveNewsToDB("all");
+saveNewsToDB("corporate");
